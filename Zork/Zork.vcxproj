@@ -139,7 +139,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="zork.cpp" />
+    <ClCompile Include="character.cpp" />
+    <ClCompile Include="world.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="character.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="item.h" />
+    <ClInclude Include="npc.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="room.h" />
+    <ClInclude Include="tokenizer.h" />
+    <ClInclude Include="util.h" />
+    <ClInclude Include="world.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

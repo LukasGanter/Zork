@@ -13,10 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Headerdateien\world">
+      <UniqueIdentifier>{f9e7cc99-5332-4f62-912a-1ac667951645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\character">
+      <UniqueIdentifier>{59b36d95-2f3c-442d-8ad7-0382de274c31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\character">
+      <UniqueIdentifier>{097c9347-ee68-4dac-8386-823dc192ecf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\world">
+      <UniqueIdentifier>{fd6430f2-5a8e-4505-b484-7a89625512d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\util">
+      <UniqueIdentifier>{fd2051aa-72d8-4117-9d70-10a8a4876345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\token">
+      <UniqueIdentifier>{e3bbbe33-d9b1-4a4d-9352-6471809d3fbb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="zork.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="world.cpp">
+      <Filter>Quelldateien\world</Filter>
+    </ClCompile>
+    <ClCompile Include="character.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="entity.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="character.h">
+      <Filter>Headerdateien\character</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>Headerdateien\world</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Headerdateien\character</Filter>
+    </ClInclude>
+    <ClInclude Include="room.h">
+      <Filter>Headerdateien\world</Filter>
+    </ClInclude>
+    <ClInclude Include="world.h">
+      <Filter>Headerdateien\world</Filter>
+    </ClInclude>
+    <ClInclude Include="npc.h">
+      <Filter>Headerdateien\character</Filter>
+    </ClInclude>
+    <ClInclude Include="tokenizer.h">
+      <Filter>Headerdateien\token</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Headerdateien\util</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
