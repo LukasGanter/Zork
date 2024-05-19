@@ -31,6 +31,9 @@
     <Filter Include="Headerdateien\token">
       <UniqueIdentifier>{e3bbbe33-d9b1-4a4d-9352-6471809d3fbb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quelldateien\token">
+      <UniqueIdentifier>{25a100e5-f32a-4841-8d0d-c1d99d8c6233}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,6 +44,12 @@
     </ClCompile>
     <ClCompile Include="character.cpp">
       <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tokenizer.cpp">
+      <Filter>Quelldateien\token</Filter>
+    </ClCompile>
+    <ClCompile Include="util.cpp">
+      <Filter>Headerdateien\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

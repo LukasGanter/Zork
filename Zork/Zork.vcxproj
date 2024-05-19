@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="character.cpp" />
+    <ClCompile Include="tokenizer.cpp" />
+    <ClCompile Include="util.cpp" />
     <ClCompile Include="world.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

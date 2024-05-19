@@ -3,6 +3,7 @@
 #include <thread>
 #include <conio.h>
 #include "world.h"
+#include "tokenizer.h"
 
 #define BACKSPACE "\033[D\033[K"
 
@@ -38,9 +39,11 @@ int main()
                 std::cout << key;
             }
             else {  // enter pressed
-                std::cout << "\n" + input + "\n";
+                std::cout << "\n";
+                std::vector<OrderTokens> order_tokens;
+                std::vector<ValueTokens> value_tokens;
+                Tokenizer::tokenize(input, order_tokens, value_tokens);
                 input = "";
-                std::cout << "> \n";
             }
         }
 
