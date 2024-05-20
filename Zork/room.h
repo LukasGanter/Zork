@@ -5,6 +5,7 @@
 #include "character.h"
 #include "weapon.h"
 #include "collectible.h"
+#include "tokenizer.h"
 
 class Room : public Entity
 {

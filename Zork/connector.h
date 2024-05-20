@@ -1,6 +1,10 @@
 #pragma once
 
 #include "entity.h"
+#include "tokenizer.h"
+#include "storyline.h"
+
+class Room;
 
 class Connector : public Entity
 {
@@ -10,6 +14,13 @@ public:
 public:
 	void tick();
 
-public:
-	//const Room* target;
+private:
+
+	Storyline* story;
+
+	Room* target;
+	ValueTokens exit_direction;
+	bool isLocked;
+	ValueTokens suitable_key;
+	int doorBlockedBy; // If value is 0 then the exit is not blocked
 };

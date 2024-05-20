@@ -1,6 +1,7 @@
 
 #include "world.h"
 #include <iostream>
+#include "storyline.h"
 
 World::World(std::string title, std::string description) :
     Entity(title, description)
