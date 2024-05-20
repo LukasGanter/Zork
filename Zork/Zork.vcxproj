@@ -153,6 +153,7 @@
     <ClCompile Include="room.cpp" />
     <ClCompile Include="shield.cpp" />
     <ClCompile Include="stick.cpp" />
+    <ClCompile Include="storyline.cpp" />
     <ClCompile Include="sword.cpp" />
     <ClCompile Include="tokenizer.cpp" />
     <ClCompile Include="util.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="room.h" />
     <ClInclude Include="shield.h" />
     <ClInclude Include="stick.h" />
+    <ClInclude Include="storyline.h" />
     <ClInclude Include="sword.h" />
     <ClInclude Include="tokenizer.h" />
     <ClInclude Include="util.h" />

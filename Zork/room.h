@@ -1,7 +1,7 @@
 #pragma once
 
-#include "connector.h"
 #include <vector>
+#include "connector.h"
 #include "character.h"
 #include "weapon.h"
 #include "collectible.h"
@@ -17,8 +17,8 @@ public:
 
 public:
 
-	//std::vector<Connector> connectors;
-	//std::vector<Character> characters;
-	//std::vector<Collectible> collectibles;
-	//std::vector<Weapon> weapons;
+	std::vector<Connector*> connectors;
+	std::vector<Character*> characters;
+	std::vector<Collectible*> collectibles;
+	std::vector<Weapon*> weapons;
 };

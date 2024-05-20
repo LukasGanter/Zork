@@ -52,6 +52,12 @@
     <Filter Include="Quelldateien\items\collectibles">
       <UniqueIdentifier>{b2f30dc2-31c2-4ead-b832-08bf8182210c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\story">
+      <UniqueIdentifier>{4962caca-9b31-4195-8164-8925f45937c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\story">
+      <UniqueIdentifier>{e89a89a2-c3a4-4c10-8c23-fa26a894dda6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -114,6 +120,9 @@
     <ClCompile Include="item.cpp">
       <Filter>Quelldateien\items</Filter>
     </ClCompile>
+    <ClCompile Include="storyline.cpp">
+      <Filter>Quelldateien\story</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h">
@@ -172,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="weapon.h">
       <Filter>Headerdateien\items\weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="storyline.h">
+      <Filter>Headerdateien\story</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
