@@ -133,6 +133,9 @@ ValueTokens Tokenizer::parseValueToken(const std::string& user_token)
 	else if (Util::equals_strings(user_token, { "breaking_rod", "rod"})) {
 		return ValueTokens::BREAKING_ROD;
 	}
+	else if (Util::equals_strings(user_token, { "chest" })) {
+		return ValueTokens::TREASURE_CHEST;
+	}
 	else if (Util::equals_strings(user_token, { "medaillon", "treasure"})) {
 		return ValueTokens::MEDAILLON;
 	}
