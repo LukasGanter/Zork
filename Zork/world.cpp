@@ -7,7 +7,11 @@ World::World()
 
 }
 
+World::~World()
+{
+}
+
 void World::tick()
 {
-    //std::cout << "Tick \n";
+    std::cout << "Tick \n";
 }

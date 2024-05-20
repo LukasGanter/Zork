@@ -139,21 +139,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="breakingRod.cpp" />
     <ClCompile Include="character.cpp" />
+    <ClCompile Include="collectible.cpp" />
+    <ClCompile Include="connector.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="item.cpp" />
+    <ClCompile Include="key.cpp" />
+    <ClCompile Include="letterFragment.cpp" />
+    <ClCompile Include="medaillon.cpp" />
+    <ClCompile Include="npc.cpp" />
+    <ClCompile Include="player.cpp" />
+    <ClCompile Include="room.cpp" />
+    <ClCompile Include="shield.cpp" />
+    <ClCompile Include="stick.cpp" />
+    <ClCompile Include="sword.cpp" />
     <ClCompile Include="tokenizer.cpp" />
     <ClCompile Include="util.cpp" />
+    <ClCompile Include="weapon.cpp" />
     <ClCompile Include="world.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="breakingRod.h" />
     <ClInclude Include="character.h" />
+    <ClInclude Include="collectible.h" />
+    <ClInclude Include="connector.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="item.h" />
+    <ClInclude Include="key.h" />
+    <ClInclude Include="letterFragment.h" />
+    <ClInclude Include="medaillon.h" />
     <ClInclude Include="npc.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />
+    <ClInclude Include="shield.h" />
+    <ClInclude Include="stick.h" />
+    <ClInclude Include="sword.h" />
     <ClInclude Include="tokenizer.h" />
     <ClInclude Include="util.h" />
+    <ClInclude Include="weapon.h" />
     <ClInclude Include="world.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

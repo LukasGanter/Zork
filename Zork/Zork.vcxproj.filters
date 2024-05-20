@@ -34,6 +34,24 @@
     <Filter Include="Quelldateien\token">
       <UniqueIdentifier>{25a100e5-f32a-4841-8d0d-c1d99d8c6233}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\items">
+      <UniqueIdentifier>{068dd013-2ebd-4676-aff2-e0f5960d5083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\items\weapon">
+      <UniqueIdentifier>{c857b1e5-98cc-4322-9038-d4b27ec11378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\items\collectibles">
+      <UniqueIdentifier>{d669f125-2c2f-41f0-b59e-56309d8e87a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\items">
+      <UniqueIdentifier>{c99df953-74e1-4325-86fe-f71b5e80ee19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\items\weapon">
+      <UniqueIdentifier>{9028d67d-c45e-4118-bca5-81759cb2b43d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\items\collectibles">
+      <UniqueIdentifier>{b2f30dc2-31c2-4ead-b832-08bf8182210c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,14 +60,59 @@
     <ClCompile Include="world.cpp">
       <Filter>Quelldateien\world</Filter>
     </ClCompile>
-    <ClCompile Include="character.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="tokenizer.cpp">
       <Filter>Quelldateien\token</Filter>
     </ClCompile>
     <ClCompile Include="util.cpp">
       <Filter>Headerdateien\util</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="connector.cpp">
+      <Filter>Quelldateien\world</Filter>
+    </ClCompile>
+    <ClCompile Include="weapon.cpp">
+      <Filter>Quelldateien\items\weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="character.cpp">
+      <Filter>Quelldateien\character</Filter>
+    </ClCompile>
+    <ClCompile Include="room.cpp">
+      <Filter>Quelldateien\world</Filter>
+    </ClCompile>
+    <ClCompile Include="collectible.cpp">
+      <Filter>Quelldateien\items\collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="key.cpp">
+      <Filter>Quelldateien\items\collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="shield.cpp">
+      <Filter>Quelldateien\items\weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="stick.cpp">
+      <Filter>Quelldateien\items\weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="sword.cpp">
+      <Filter>Quelldateien\items\weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="medaillon.cpp">
+      <Filter>Quelldateien\items\collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="letterFragment.cpp">
+      <Filter>Quelldateien\items\collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="breakingRod.cpp">
+      <Filter>Quelldateien\items\weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="npc.cpp">
+      <Filter>Quelldateien\character</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Quelldateien\character</Filter>
+    </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>Quelldateien\items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,9 +121,6 @@
     </ClInclude>
     <ClInclude Include="character.h">
       <Filter>Headerdateien\character</Filter>
-    </ClInclude>
-    <ClInclude Include="item.h">
-      <Filter>Headerdateien\world</Filter>
     </ClInclude>
     <ClInclude Include="player.h">
       <Filter>Headerdateien\character</Filter>
@@ -79,6 +139,39 @@
     </ClInclude>
     <ClInclude Include="util.h">
       <Filter>Headerdateien\util</Filter>
+    </ClInclude>
+    <ClInclude Include="connector.h">
+      <Filter>Headerdateien\world</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>Headerdateien\items</Filter>
+    </ClInclude>
+    <ClInclude Include="breakingRod.h">
+      <Filter>Headerdateien\items\weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="sword.h">
+      <Filter>Headerdateien\items\weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="shield.h">
+      <Filter>Headerdateien\items\weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="collectible.h">
+      <Filter>Headerdateien\items\collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="letterFragment.h">
+      <Filter>Headerdateien\items\collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="medaillon.h">
+      <Filter>Headerdateien\items\collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="stick.h">
+      <Filter>Headerdateien\items\weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="key.h">
+      <Filter>Headerdateien\items\collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="weapon.h">
+      <Filter>Headerdateien\items\weapon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

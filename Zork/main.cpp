@@ -48,8 +48,8 @@ int main()
         }
 
         if (input.length() == 0) {
-            std::this_thread::sleep_for(frame_duration{ 1 });
             world.tick();
+            std::this_thread::sleep_for(frame_duration{ 1 });
         }
     }
 
