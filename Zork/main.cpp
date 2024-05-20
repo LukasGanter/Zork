@@ -40,10 +40,8 @@ int main()
             }
             else {  // enter pressed
                 std::cout << "\n";
-                std::vector<OrderTokens> order_tokens;
-                std::vector<ValueTokens> value_tokens;
-                Tokenizer::tokenize(input, order_tokens, value_tokens);
                 input = "";
+                world.onPlayerInput(input);
             }
         }
 

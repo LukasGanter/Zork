@@ -10,8 +10,10 @@ public:
 	~World();
 
 public:
+	void onPlayerInput(const std::string& input);
 	void tick();
 
-public:
+private:
+
 	std::vector<Room*> rooms;
 };

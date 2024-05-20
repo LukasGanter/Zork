@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 
-enum OrderTokens
+enum class OrderTokens
 {
 	UNKNOWN_ORDER,
 	LOOK,
@@ -19,7 +19,7 @@ enum OrderTokens
 	UNLOCK
 };
 
-enum ValueTokens
+enum class ValueTokens
 {
 	UNKNOWN_VALUE,
 	NORTH,
@@ -42,6 +42,7 @@ enum ValueTokens
 	LETTER_FRAGMENT_RIVER,
 	KEY_HOUSE,
 	BREAKING_ROD,
+	TREASURE_CHEST,
 	MEDAILLON
 };
 

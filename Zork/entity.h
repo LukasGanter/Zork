@@ -7,6 +7,8 @@ public:
 	Entity(std::string title, std::string description);
 	~Entity();
 
+	const void printInformation();
+
 public:
 	std::string title;
 	std::string description;
