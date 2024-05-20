@@ -1,6 +1,7 @@
 #include "medaillon.h"
 
-Medaillon::Medaillon()
+Medaillon::Medaillon(std::string title, std::string description) :
+	Collectible(title, description)
 {
 }
 

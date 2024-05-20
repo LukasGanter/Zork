@@ -5,7 +5,7 @@
 class Character : public Entity
 {
 public:
-	Character();
+	Character(std::string title, std::string description);
 	~Character();
 
 public:

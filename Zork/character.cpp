@@ -1,6 +1,7 @@
 #include "character.h"
 
-Character::Character()
+Character::Character(std::string title, std::string description) : 
+	Entity(title, description)
 {
 }
 

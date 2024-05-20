@@ -6,7 +6,7 @@
 class Connector : public Entity
 {
 public:
-	Connector();
+	Connector(std::string title, std::string description);
 
 public:
 	void tick();

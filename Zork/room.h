@@ -9,7 +9,7 @@
 class Room : public Entity
 {
 public:
-	Room();
+	Room(std::string title, std::string description);
 	~Room();
 
 public:

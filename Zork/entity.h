@@ -4,7 +4,7 @@
 class Entity
 {
 public:
-	Entity();
+	Entity(std::string title, std::string description);
 	~Entity();
 
 public:

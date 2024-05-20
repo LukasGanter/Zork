@@ -5,6 +5,6 @@
 class Stick : public Weapon
 {
 public:
-	Stick();
+	Stick(std::string title, std::string description);
 	~Stick();
 };

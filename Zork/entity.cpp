@@ -1,6 +1,6 @@
 #include "entity.h"
 
-Entity::Entity()
+Entity::Entity(std::string title, std::string description) : title(title), description(description)
 {
 }
 

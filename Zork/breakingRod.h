@@ -5,6 +5,6 @@
 class BreakingRod : public Weapon
 {
 public:
-	BreakingRod();
+	BreakingRod(std::string title, std::string description);
 	~BreakingRod();
 };

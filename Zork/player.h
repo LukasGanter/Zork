@@ -5,7 +5,7 @@
 class Player : public Character
 {
 public:
-	Player();
+	Player(std::string title, std::string description);
 	~Player();
 
 public:

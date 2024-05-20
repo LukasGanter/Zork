@@ -1,6 +1,7 @@
 #include "room.h"
 
-Room::Room()
+Room::Room(std::string title, std::string description) :
+	Entity(title, description)
 {
 }
 

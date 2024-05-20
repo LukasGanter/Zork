@@ -1,6 +1,7 @@
 #include "letterFragment.h"
 
-LetterFragment::LetterFragment()
+LetterFragment::LetterFragment(std::string title, std::string description) :
+	Collectible(title, description)
 {
 }
 

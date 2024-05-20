@@ -1,6 +1,7 @@
 #include "key.h"
 
-Key::Key()
+Key::Key(std::string title, std::string description) :
+	Collectible(title, description)
 {
 }
 

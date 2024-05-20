@@ -1,6 +1,7 @@
 #include "player.h"
 
-Player::Player()
+Player::Player(std::string title, std::string description) :
+	Character(title, description)
 {
 }
 

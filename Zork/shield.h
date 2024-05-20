@@ -5,6 +5,6 @@
 class Shield : public Weapon
 {
 public:
-	Shield();
+	Shield(std::string title, std::string description);
 	~Shield();
 };

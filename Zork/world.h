@@ -6,12 +6,12 @@
 class World : public Entity
 {
 public:
-	World();
+	World(std::string title, std::string description);
 	~World();
 
 public:
 	void tick();
 
 public:
-	std::vector<Room> rooms;
+	std::vector<Room*> rooms;
 };

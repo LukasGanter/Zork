@@ -5,6 +5,6 @@
 class Sword : public Weapon
 {
 public:
-	Sword();
+	Sword(std::string title, std::string description);
 	~Sword();
 };

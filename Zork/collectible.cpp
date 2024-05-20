@@ -1,6 +1,7 @@
 #include "collectible.h"
 
-Collectible::Collectible()
+Collectible::Collectible(std::string title, std::string description) :
+	Item(title, description)
 {
 }
 
