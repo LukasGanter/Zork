@@ -8,3 +8,13 @@ BreakingRod::BreakingRod(const std::string& id, const std::string& title, const 
 BreakingRod::~BreakingRod()
 {
 }
+
+int BreakingRod::attack_enemy(const NPC* attacked_npc)
+{
+	return 0;
+}
+
+int BreakingRod::destroy_obstacle(const int resistance)
+{
+	return 0;
+}

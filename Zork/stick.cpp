@@ -8,3 +8,13 @@ Stick::Stick(const std::string& id, const std::string& title, const std::string&
 Stick::~Stick()
 {
 }
+
+int Stick::attack_enemy(const NPC* attacked_npc)
+{
+	return 0;
+}
+
+int Stick::destroy_obstacle(const int resistance)
+{
+	return 0;
+}

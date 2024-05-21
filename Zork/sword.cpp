@@ -8,3 +8,13 @@ Sword::Sword(const std::string& id, const std::string& title, const std::string&
 Sword::~Sword()
 {
 }
+
+int Sword::attack_enemy(const NPC* attacked_npc)
+{
+	return 0;
+}
+
+int Sword::destroy_obstacle(const int resistance)
+{
+	return 0;
+}

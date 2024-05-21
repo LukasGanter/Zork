@@ -8,3 +8,13 @@ Shield::Shield(const std::string& id, const std::string& title, const std::strin
 Shield::~Shield()
 {
 }
+
+int Shield::attack_enemy(const NPC* attacked_npc)
+{
+	return 0;
+}
+
+int Shield::destroy_obstacle(const int resistance)
+{
+	return 0;
+}

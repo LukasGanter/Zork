@@ -128,7 +128,7 @@ ValueTokens Tokenizer::parseValueToken(const std::string& user_token)
 		return ValueTokens::LETTER_FRAGMENT_RIVER;
 	}
 	else if (Util::equals_strings(user_token, { "house_key" })) {
-		return ValueTokens::KEY_HOUSE;
+		return ValueTokens::KEY;
 	}
 	else if (Util::equals_strings(user_token, { "breaking_rod", "rod"})) {
 		return ValueTokens::BREAKING_ROD;

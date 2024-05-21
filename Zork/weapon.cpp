@@ -8,3 +8,13 @@ Weapon::Weapon(const std::string& id, const std::string& title, const std::strin
 Weapon::~Weapon()
 {
 }
+
+int Weapon::attack_enemy(const NPC* attacked_npc)
+{
+	return 0;
+}
+
+int Weapon::destroy_obstacle(const int resistance)
+{
+	return 0;
+}
