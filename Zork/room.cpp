@@ -1,8 +1,8 @@
 #include "room.h"
 #include <iostream>
 
-Room::Room(std::string title, std::string description, Player* player) :
-	Entity(title, description), player(player)
+Room::Room(const std::string& title, const std::string& description, Player* player, const std::vector<Connector*>& connectors, const std::vector<NPC*>& npcs, const std::vector<Collectible*>& collectibles, const std::vector<Weapon*>& weapons) :
+	Entity(title, description), player(player), connectors(connectors), npcs(npcs), collectibles(collectibles), weapons(weapons)
 {
 }
 
@@ -10,7 +10,7 @@ Room::~Room()
 {
 }
 
-void Room::updateByToken(std::vector<OrderTokens>& order_tokens, std::vector<ValueTokens>& value_tokens)
+void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<ValueTokens>& value_tokens)
 {
 	// For a start only one order token and 0 or 1 value token is used per user input
 	const OrderTokens order = order_tokens.size() > 0 ? order_tokens[0] : OrderTokens::UNKNOWN_ORDER;
@@ -19,7 +19,7 @@ void Room::updateByToken(std::vector<OrderTokens>& order_tokens, std::vector<Val
 	if (player != nullptr) {
 		switch (order) {
 		case OrderTokens::LOOK:
-			lookAround();
+			look_around();
 			break;
 		case OrderTokens::TAKE:
 			break;
@@ -69,13 +69,13 @@ void Room::tick()
 	}
 }
 
-void Room::joinRoom(Player* player)
+void Room::join_room(Player* player)
 {
 	this->player = player;
 	printInformation();
 }
 
-void Room::lookAround()
+void Room::look_around()
 {
 	printInformation();
 }

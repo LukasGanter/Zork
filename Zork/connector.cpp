@@ -23,7 +23,7 @@ void Connector::tick()
 	if (player != nullptr) {
 		if (story->tick()) {
 			// Story finished, switching to next room
-			target->joinRoom(player);
+			target->join_room(player);
 			player = nullptr;
 		}
 	}

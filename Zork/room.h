@@ -12,18 +12,18 @@
 class Room : public Entity
 {
 public:
-	Room(std::string title, std::string description, Player* player);
+	Room(const std::string& title, const std::string& description, Player* player, const std::vector<Connector*>& connectors, const std::vector<NPC*>& npcs, const std::vector<Collectible*>& collectibles, const std::vector<Weapon*>& weapons);
 	~Room();
 
 public:
-	void updateByToken(std::vector<OrderTokens>& order_tokens, std::vector<ValueTokens>& value_tokens);
+	void update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<ValueTokens>& value_tokens);
 	void tick();
 
-	void joinRoom(Player* player);
+	void join_room(Player* player);
 
 private:
 
-	void lookAround();
+	void look_around();
 
 public:
 
@@ -34,3 +34,4 @@ public:
 	std::vector<Collectible*> collectibles;
 	std::vector<Weapon*> weapons;
 };
+
