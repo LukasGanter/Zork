@@ -1,4 +1,5 @@
 #include "weapon.h"
+#include <iostream>
 
 Weapon::Weapon(const std::string& id, const std::string& title, const std::string& description, const int attack_points, const int destruction_points, const int defence_points, const int durability) :
 	Item(id, title, description), attack_points(attack_points), destruction_points(destruction_points), defence_points(defence_points), durability(durability)
@@ -9,12 +10,7 @@ Weapon::~Weapon()
 {
 }
 
-int Weapon::attack_enemy(const NPC* attacked_npc)
+void Weapon::print_stats()
 {
-	return 0;
-}
-
-int Weapon::destroy_obstacle(const int resistance)
-{
-	return 0;
+	std::cout << "Attack: " << attack_points << ", Destruction: " << destruction_points << ", Defence: " << defence_points << "\n"; //", Durability: " << durability << "\n"; (not currently in use)
 }

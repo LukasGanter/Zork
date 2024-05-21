@@ -12,5 +12,7 @@ public:
 
 	int attack_enemy(const NPC* attacked_npc) override;
 
+	int defend_attack(const NPC* attacking_npc) override;
+
 	int destroy_obstacle(const int resistance) override;
 };
