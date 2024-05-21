@@ -2,8 +2,8 @@
 #include "room.h"
 #include <iostream>
 
-Connector::Connector(std::string title, std::string description, Storyline* story, Room* target, ValueTokens exit_direction, bool isLocked, ValueTokens suitable_key, int doorBlockedBy) :
-	Entity(title, description), story(story), target(target), exit_direction(exit_direction), isLocked(isLocked), suitable_key(suitable_key), doorBlockedBy(doorBlockedBy), player(nullptr)
+Connector::Connector(const std::string& id, const std::string& title, const std::string& description, Storyline* story, Room* target, ValueTokens exit_direction, bool isLocked, ValueTokens suitable_key, int doorBlockedBy) :
+	Entity(id, title, description), story(story), target(target), exit_direction(exit_direction), isLocked(isLocked), suitable_key(suitable_key), doorBlockedBy(doorBlockedBy), player(nullptr)
 {
 	//this->target = target;
 }
@@ -18,6 +18,11 @@ Connector::~Connector()
 	story = nullptr;
 }
 
+void Connector::init_target(Room* target)
+{
+	this->target = target;
+}
+
 void Connector::tick()
 {
 	if (player != nullptr) {
@@ -29,7 +34,7 @@ void Connector::tick()
 	}
 }
 
-bool Connector::takeConnector(const ValueTokens& direction, Player* player)
+bool Connector::take_connector(const ValueTokens& direction, Player* player)
 {
 	// Check if the direction is valid
 	if (exit_direction == direction) {

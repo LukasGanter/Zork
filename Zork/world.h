@@ -7,7 +7,7 @@
 class World : public Entity
 {
 public:
-	World(const std::string& title, const std::string& description);
+	World(const std::string& id, const std::string& title, const std::string& description);
 	~World();
 
 public:

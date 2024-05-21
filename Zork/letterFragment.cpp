@@ -1,7 +1,7 @@
 #include "letterFragment.h"
 
-LetterFragment::LetterFragment(std::string title, std::string description) :
-	Collectible(title, description)
+LetterFragment::LetterFragment(const std::string& id, const std::string& title, const std::string& description) :
+	Collectible(id, title, description)
 {
 }
 

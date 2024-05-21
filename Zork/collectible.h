@@ -4,6 +4,6 @@
 class Collectible : public Item
 {
 public:
-	Collectible(std::string title, std::string description);
+	Collectible(const std::string& id, const std::string& title, const std::string& description);
 	~Collectible();
 };

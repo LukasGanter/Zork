@@ -1,7 +1,7 @@
 #include "character.h"
 
-Character::Character(std::string title, std::string description) : 
-	Entity(title, description)
+Character::Character(const std::string& id, const std::string& title, const std::string& description) :
+	Entity(id, title, description)
 {
 }
 

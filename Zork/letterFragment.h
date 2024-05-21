@@ -5,6 +5,6 @@
 class LetterFragment : public Collectible
 {
 public:
-	LetterFragment(std::string title, std::string description);
+	LetterFragment(const std::string& id, const std::string& title, const std::string& description);
 	~LetterFragment();
 };

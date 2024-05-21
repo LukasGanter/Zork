@@ -1,7 +1,7 @@
 #include "key.h"
 
-Key::Key(std::string title, std::string description) :
-	Collectible(title, description)
+Key::Key(const std::string& id, const std::string& title, const std::string& description) :
+	Collectible(id, title, description)
 {
 }
 

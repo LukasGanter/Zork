@@ -10,12 +10,13 @@ class Room;
 class Connector : public Entity
 {
 public:
-	Connector(std::string title, std::string description, Storyline* story, Room* target, ValueTokens exit_direction, bool isLocked, ValueTokens suitable_key, int doorBlockedBy);
+	Connector(const std::string& id, const std::string& title, const std::string& description, Storyline* story, Room* target, ValueTokens exit_direction, bool isLocked, ValueTokens suitable_key, int doorBlockedBy);
 	~Connector();
 
+	void init_target(Room* target);
 public:
 	void tick();
-	bool takeConnector(const ValueTokens& direction, Player* player);
+	bool take_connector(const ValueTokens& direction, Player* player);
 
 private:
 

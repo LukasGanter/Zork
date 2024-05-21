@@ -1,7 +1,7 @@
 #include "entity.h"
 #include <iostream>
 
-Entity::Entity(std::string title, std::string description) : title(title), description(description)
+Entity::Entity(const std::string& id, const std::string& title, const std::string& description) : id(id), title(title), description(description)
 {
 }
 

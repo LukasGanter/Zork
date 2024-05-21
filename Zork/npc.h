@@ -5,7 +5,7 @@
 class NPC : public Character
 {
 public:
-	NPC(std::string title, std::string description);
+	NPC(const std::string& id, const std::string& title, const std::string& description);
 	~NPC();
 
 public:

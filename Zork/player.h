@@ -7,7 +7,7 @@
 class Player : public Character
 {
 public:
-	Player(std::string title, std::string description);
+	Player(const std::string& id, const std::string& title, const std::string& description);
 	~Player();
 
 public:

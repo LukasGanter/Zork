@@ -1,7 +1,7 @@
 #include "collectible.h"
 
-Collectible::Collectible(std::string title, std::string description) :
-	Item(title, description)
+Collectible::Collectible(const std::string& id, const std::string& title, const std::string& description) :
+	Item(id, title, description)
 {
 }
 

@@ -5,6 +5,6 @@
 class Medaillon : public Collectible
 {
 public:
-	Medaillon(std::string title, std::string description);
+	Medaillon(const std::string& id, const std::string& title, const std::string& description);
 	~Medaillon();
 };

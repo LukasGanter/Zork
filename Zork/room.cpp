@@ -1,8 +1,8 @@
 #include "room.h"
 #include <iostream>
 
-Room::Room(const std::string& title, const std::string& description, Player* player, const std::vector<Connector*>& connectors, const std::vector<NPC*>& npcs, const std::vector<Collectible*>& collectibles, const std::vector<Weapon*>& weapons) :
-	Entity(title, description), player(player), connectors(connectors), npcs(npcs), collectibles(collectibles), weapons(weapons)
+Room::Room(const std::string& id, const std::string& title, const std::string& description, Player* player, const std::vector<Connector*>& connectors, const std::vector<NPC*>& npcs, const std::vector<Collectible*>& collectibles, const std::vector<Weapon*>& weapons) :
+	Entity(id, title, description), player(player), connectors(connectors), npcs(npcs), collectibles(collectibles), weapons(weapons)
 {
 }
 
@@ -46,7 +46,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 		case OrderTokens::MOVE:
 			bool took_connector;
 			for (Connector* connector : connectors) {
-				if (connector->takeConnector(value, player)) {
+				if (connector->take_connector(value, player)) {
 					took_connector = true;
 					player = nullptr;
 					break;

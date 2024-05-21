@@ -4,6 +4,6 @@
 class Key : public Collectible
 {
 public:
-	Key(std::string title, std::string description);
+	Key(const std::string& id, const std::string& title, const std::string& description);
 	~Key();
 };

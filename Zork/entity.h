@@ -4,12 +4,13 @@
 class Entity
 {
 public:
-	Entity(std::string title, std::string description);
+	Entity(const std::string& id, const std::string& title, const std::string& description);
 	~Entity();
 
 	const void printInformation();
 
 public:
-	std::string title;
-	std::string description;
+	const std::string& id;
+	const std::string& title;
+	const std::string& description;
 };

@@ -1,7 +1,7 @@
 #include "npc.h"
 
-NPC::NPC(std::string title, std::string description) :
-	Character(title, description)
+NPC::NPC(const std::string& id, const std::string& title, const std::string& description) :
+	Character(id, title, description)
 {
 }
 

@@ -1,7 +1,7 @@
 #include "player.h"
 
-Player::Player(std::string title, std::string description) :
-	Character(title, description)
+Player::Player(const std::string& id, const std::string& title, const std::string& description) :
+	Character(id, title, description)
 {
 	equiped_weapon = nullptr;
 	has_backpack = false;

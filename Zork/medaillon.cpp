@@ -1,7 +1,7 @@
 #include "medaillon.h"
 
-Medaillon::Medaillon(std::string title, std::string description) :
-	Collectible(title, description)
+Medaillon::Medaillon(const std::string& id, const std::string& title, const std::string& description) :
+	Collectible(id, title, description)
 {
 }
 

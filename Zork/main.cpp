@@ -17,7 +17,7 @@ int main()
 
     using frame_duration = std::chrono::duration<int64_t, std::ratio<1, 5>>;  // 5Hz
 
-    World world("Mountains", "Welcome to Zork mountains!");
+    World world("world", "Mountains", "Welcome to Zork mountains!");
 
     while (true)
     {

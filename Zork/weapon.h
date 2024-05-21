@@ -4,13 +4,13 @@
 class Weapon : public Item
 {
 public:
-	Weapon(std::string title, std::string description, int attack_points, int destruction_points, int defence_points, int durability);
+	Weapon(const std::string& id, const std::string& title, const std::string& description, const int attack_points, const int destruction_points, const int defence_points, const int durability);
 	~Weapon();
 
 protected:
-	int attack_points = 0;
-	int destruction_points = 0;
-	int defence_points = 0;
+	int attack_points;
+	int destruction_points;
+	int defence_points;
 
-	int durability = 0;
+	int durability;
 };
