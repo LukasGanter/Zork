@@ -8,7 +8,7 @@ World::World(const std::string& id, const std::string& title, const std::string&
     Entity(id, title, description)
 {
     Player* player = new Player("player", "Player1", "Only player in the world");
-    Room* room1 = new Room("mountains", "Mountainous terrain", "This is outside", player, {}, {}, {}, {});
+    Room* room1 = new Room("mountains", "Mountainous terrain", "This is outside", player, {}, {}, {});
 }
 
 World::~World()
