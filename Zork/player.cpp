@@ -25,7 +25,7 @@ bool Player::equip_weapon(const ValueTokens weapon_type, const std::string& weap
 	}
 
 	int item_to_equip = -1;
-	for (int i = 0; i < inventory.size(); i++) {
+	for (size_t i = 0; i < inventory.size(); i++) {
 		if (inventory[i]->title.compare(weapon_id) == 0) {
 			item_to_equip = i;
 			break;
@@ -79,7 +79,7 @@ bool Player::take_item(Item* item)
 bool Player::drop_item(Room* room, const ValueTokens item_type, const std::string& item_id)
 {
 	int itemToRemove = -1;
-	for (int i = 0; i < inventory.size(); i++) {
+	for (size_t i = 0; i < inventory.size(); i++) {
 		if (inventory[i]->title.compare(item_id) == 0) {
 			itemToRemove = i;
 			break;

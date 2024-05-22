@@ -70,7 +70,7 @@ public:
 private:
 
 	Weapon* equiped_weapon;
-	const int max_inventory_size = 7;
+	const size_t max_inventory_size = 7;
 	std::vector<Item*> inventory;
 
 };

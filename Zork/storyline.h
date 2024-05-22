@@ -21,5 +21,5 @@ private:
 	int ticksBetweenStoryParts;
 	std::vector<std::string> story;
 
-	int currentStoryPoint;
+	size_t currentStoryPoint;
 };
