@@ -5,21 +5,34 @@
 class Storyline
 {
 public: 
-	Storyline(std::vector<std::string> story);
+	Storyline(const std::vector<std::string>& story);
 
+	/*
+	Story tick, only called while the story is active
+
+	Return:		Whether the story finished during this tick
+	*/
 	bool tick();
 
+	// Resets the story. Next tick call will start the story from the start
 	void reset();
 
 private:
 
-	bool getNextLine(std::string& nextLine);
+	/*
+	Prints the next line to the console
+
+	Input "next_line":	output reference for the next story line
+
+	Return:				Whether the story has finished
+	*/
+	bool getNextLine(std::string& next_line);
 
 private:
 
 	int counter;
 	int ticksBetweenStoryParts;
-	std::vector<std::string> story;
+	const std::vector<std::string> story;
 
 	size_t currentStoryPoint;
 };

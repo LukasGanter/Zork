@@ -1,7 +1,7 @@
 #include "storyline.h"
 #include <iostream>
 
-Storyline::Storyline(std::vector<std::string> story) : story(story), currentStoryPoint(0), counter(0), ticksBetweenStoryParts(5)
+Storyline::Storyline(const std::vector<std::string>& story) : story(story), currentStoryPoint(0), counter(0), ticksBetweenStoryParts(5)
 {
 	
 }
@@ -15,7 +15,6 @@ bool Storyline::tick()
 		std::cout << next_part << "\n";
 
 		counter = 0;
-		return story_finished;
 	}
 	else {
 		counter++;
