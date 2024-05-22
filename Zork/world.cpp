@@ -4,11 +4,11 @@
 #include <iostream>
 #include "storyline.h"
 
-World::World(const std::string& id, const std::string& title, const std::string& description) :
-    Entity(id, title, description)
+World::World(const std::string& title, const std::string& description) :
+    Entity(title, description)
 {
-    Player* player = new Player("player", "Player1", "Only player in the world");
-    Room* room1 = new Room("mountains", "Mountainous terrain", "This is outside", player, {}, {}, {});
+    Player* player = new Player("Rantanplan", "Only player in the world");
+    Room* room1 = new Room("Mountais", "This is outside", player, {}, {}, {});
 }
 
 World::~World()

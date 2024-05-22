@@ -2,8 +2,8 @@
 #include "room.h"
 #include <iostream>
 
-Player::Player(const std::string& id, const std::string& title, const std::string& description) :
-	Character(id, title, description), equiped_weapon(nullptr)
+Player::Player(const std::string& title, const std::string& description) :
+	Character(title, description), equiped_weapon(nullptr)
 {
 }
 
@@ -20,13 +20,13 @@ void Player::tick()
 bool Player::equip_weapon(const ValueTokens weapon_type, const std::string& weapon_id)
 {
 	if (equiped_weapon != nullptr) {
-		std::cout << "Deep in thoughts you try to get " << weapon_id << " out of your bag. Then you remember. You are already handling "<< equiped_weapon->id << "\n";
+		std::cout << "Deep in thoughts you try to get " << weapon_id << " out of your bag. Then you remember. You are already handling "<< equiped_weapon->title << "\n";
 		return false;
 	}
 
 	int item_to_equip = -1;
 	for (int i = 0; i < inventory.size(); i++) {
-		if (inventory[i]->id.compare(weapon_id) == 0) {
+		if (inventory[i]->title.compare(weapon_id) == 0) {
 			item_to_equip = i;
 			break;
 		}
@@ -48,12 +48,12 @@ bool Player::unequip_weapon(Room* room)
 {
 	if (equiped_weapon != nullptr) {
 		if (inventory.size() < max_inventory_size) {
-			std::cout << "You remove your " << equiped_weapon->id << " from your arms and put it in your bag.\n";
+			std::cout << "You remove your " << equiped_weapon->title << " from your arms and put it in your bag.\n";
 			inventory.push_back(equiped_weapon);
 			equiped_weapon = nullptr;
 		}
 		else {
-			std::cout << "Your bag is too heavy. Completely out of strength your drop " << equiped_weapon->id << "on the floor.\n";
+			std::cout << "Your bag is too heavy. Completely out of strength your drop " << equiped_weapon->title << "on the floor.\n";
 		}
 		return true;
 	}
@@ -66,7 +66,7 @@ bool Player::unequip_weapon(Room* room)
 bool Player::take_item(Item* item)
 {
 	if (inventory.size() < max_inventory_size) {
-		std::cout << "You take " << item->id << " from the floor and put it in your bag.\n";
+		std::cout << "You take " << item->title << " from the floor and put it in your bag.\n";
 		inventory.push_back(item);
 		return true;
 	}
@@ -80,7 +80,7 @@ bool Player::drop_item(Room* room, const ValueTokens item_type, const std::strin
 {
 	int itemToRemove = -1;
 	for (int i = 0; i < inventory.size(); i++) {
-		if (inventory[i]->id.compare(item_id) == 0) {
+		if (inventory[i]->title.compare(item_id) == 0) {
 			itemToRemove = i;
 			break;
 		}
@@ -115,7 +115,7 @@ void Player::search_inventory()
 	else {
 		std::cout << "You have some items inside your inventory. Let´s see what it is.\n";
 		for (Item* item : inventory) {
-			item->printInformation();
+			item->print_information();
 		}
 	}
 	

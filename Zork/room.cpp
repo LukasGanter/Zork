@@ -1,8 +1,8 @@
 #include "room.h"
 #include <iostream>
 
-Room::Room(const std::string& id, const std::string& title, const std::string& description, Player* player, const std::vector<Connector*>& connectors, const std::vector<NPC*>& npcs, const std::vector<Item*>& items) :
-	Entity(id, title, description), player(player), connectors(connectors), npcs(npcs), items(items)
+Room::Room(const std::string& title, const std::string& description, Player* player, const std::vector<Connector*>& connectors, const std::vector<NPC*>& npcs, const std::vector<Item*>& items) :
+	Entity(title, description), player(player), connectors(connectors), npcs(npcs), items(items)
 {
 }
 
@@ -93,7 +93,7 @@ void Room::tick()
 void Room::join_room(Player* player)
 {
 	this->player = player;
-	printInformation();
+	print_information();
 }
 
 void Room::drop_item(Item* item)
@@ -103,5 +103,5 @@ void Room::drop_item(Item* item)
 
 void Room::look_around()
 {
-	printInformation();
+	print_information();
 }

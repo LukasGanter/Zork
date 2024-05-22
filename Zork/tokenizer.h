@@ -12,6 +12,7 @@ enum class OrderTokens
 	ATTACK,
 	DEFEND,
 	TALK,
+	READ,
 	INVENTORY,
 	EQUIP,
 	UNEQUIP,

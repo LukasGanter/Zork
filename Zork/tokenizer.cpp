@@ -52,6 +52,9 @@ OrderTokens Tokenizer::parseOrderToken(const std::string& user_token)
 	else if (Util::equals_strings(user_token, { "talk", "speak", "greet", "ask"})) {
 		return OrderTokens::TALK;
 	}
+	else if (Util::equals_strings(user_token, { "read" })) {
+		return OrderTokens::READ;
+	}
 	else if (Util::equals_strings(user_token, { "inventory", "overview", "items" })) {
 		return OrderTokens::INVENTORY;
 	}

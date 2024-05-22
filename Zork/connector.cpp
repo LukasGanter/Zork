@@ -2,8 +2,8 @@
 #include "room.h"
 #include <iostream>
 
-Connector::Connector(const std::string& id, const std::string& title, const std::string& description, Storyline* story, Room* target, ValueTokens exit_direction, bool is_locked, std::string& suitable_key, int door_blocked_by, int block_resistance) :
-	Entity(id, title, description), story(story), target(target), exit_direction(exit_direction), is_locked(is_locked), suitable_key(suitable_key), door_blocked_by(door_blocked_by), player(nullptr), block_resistance(block_resistance)
+Connector::Connector(const std::string& title, const std::string& description, Storyline* story, Room* target, ValueTokens exit_direction, bool is_locked, std::string& suitable_key, int door_blocked_by, int block_resistance) :
+	Entity(title, description), story(story), target(target), exit_direction(exit_direction), is_locked(is_locked), suitable_key(suitable_key), door_blocked_by(door_blocked_by), player(nullptr), block_resistance(block_resistance)
 {
 	
 }
