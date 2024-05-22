@@ -4,7 +4,7 @@
 class Collectible : public Item
 {
 public:
-	Collectible(const std::string& title, const std::string& description, const std::string& story);
+	Collectible(const std::string& title, const std::string& description, const std::string& content);
 	~Collectible();
 
 	/*
@@ -14,5 +14,5 @@ public:
 
 protected:
 
-	const std::string& story;
+	const std::string& content;
 };

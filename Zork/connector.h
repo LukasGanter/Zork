@@ -10,7 +10,7 @@ class Room;
 class Connector : public Entity
 {
 public:
-	Connector(const std::string& title, const std::string& description, Storyline* story, Room* target, ValueTokens exit_direction, bool is_locked, std::string& suitable_key, int door_blocked_by, int block_resistance);
+	Connector(const std::string& title, const std::string& description, Storyline* story, const ValueTokens exit_direction, bool is_locked, const std::string& suitable_key, int door_blocked_by, int block_resistance);
 	~Connector();
 
 	/*
@@ -67,9 +67,9 @@ private:
 	Player* player;
 
 	Room* target;
-	ValueTokens exit_direction;
+	const ValueTokens exit_direction;
 	bool is_locked;
-	std::string& suitable_key;
+	const std::string& suitable_key;
 	int door_blocked_by; // If value is <= 0 then the exit is not blocked
 	int block_resistance;
 };

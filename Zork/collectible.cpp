@@ -2,7 +2,7 @@
 #include <iostream>
 
 Collectible::Collectible(const std::string& title, const std::string& description, const std::string& story) :
-	Item(title, description), story(story)
+	Item(title, description), content(story)
 {
 }
 
@@ -12,5 +12,5 @@ Collectible::~Collectible()
 
 void Collectible::read_story()
 {
-	std::cout << story << "\n";
+	std::cout << content << "\n";
 }

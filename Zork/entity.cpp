@@ -11,5 +11,5 @@ Entity::~Entity()
 
 const void Entity::print_information()
 {
-	std::cout << title << ": " << description;
+	std::cout << title << ": " << description << "\n";
 }

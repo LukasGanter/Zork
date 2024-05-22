@@ -12,19 +12,11 @@ bool Tokenizer::tokenize(const std::string& input, std::vector<OrderTokens>& ord
 		return false;
 	}
 
-	OrderTokens order;
-	ValueTokens value;
+	order_tokens.push_back(parseOrderToken(input_parts[0]));
 
-	order = parseOrderToken(input_parts[0]);
-
-	if (input_parts.size() >= 2) {
-		value = parseValueToken(input_parts[0]);
+	for(size_t i = 1; i < input_parts.size(); i++) {
+		value_tokens.push_back(parseValueToken(input_parts[i]));
 	}
-
-	/*for (const std::string& part : input_parts)
-	{
-		std::cout << part + "\n";
-	}*/
 
 	return true;
 }

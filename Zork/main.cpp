@@ -40,8 +40,8 @@ int main()
             }
             else {  // enter pressed
                 std::cout << "\n";
-                input = "";
                 world.on_player_input(input);
+                input = "";
             }
         }
 

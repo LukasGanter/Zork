@@ -13,6 +13,6 @@ public:
 	const void print_information();
 
 public:
-	const std::string& title;
-	const std::string& description;
+	const std::string title;
+	const std::string description;
 };
