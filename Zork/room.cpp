@@ -47,6 +47,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 	int item_index = -1;
 	std::vector<Key*> keys;
 	NPC* npc;
+	Item* item;
 
 	if (player != nullptr) {
 		switch (order) {
@@ -62,6 +63,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 				Item* item = items[i];
 				if (static_cast<Storage*>(item) && item->token == value) {
 					static_cast<Storage*>(item)->take_item(player);
+					item = nullptr;
 					break;
 				}
 			}
@@ -71,14 +73,16 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 				break;
 			}
 			for (size_t i = 0; i < items.size(); i++) {
-				Item* item = items[i];
+				item = items[i];
 				if (item->token == value) {
 					if (player->take_item(item, value)) {
 						item_index = i;
+						item = nullptr;
 						break;
 					}
 				}
 			}
+			item = nullptr;
 
 			if (item_index != -1) {
 				items.erase(items.begin() + item_index);
@@ -96,7 +100,14 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			}
 			break;
 		case OrderTokens::STORE:
-
+			if (!check_wrong_value_input(value)) {
+				break;
+			}
+			item = get_item_for_token(value);
+			if (static_cast<Storage*>(item)) {
+				player->drop_item_into_storage(static_cast<Storage*>(item));
+			}
+			item = nullptr;
 			break;
 		case OrderTokens::ATTACK:
 
@@ -111,6 +122,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			else {
 				std::cout << "Nobody with that name is here in the room!\n";
 			}
+			npc = nullptr;
 			break;
 		case OrderTokens::READ:
 			if (!check_wrong_value_input(value)) {
@@ -137,17 +149,16 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 					for (Connector* connector : connectors) {
 						if (connector->exit_direction == value || connector->token == value) {
 							connector->lock(key->token);
-							return;
 						}
 					}
 					for (Item* item : items) {
 						if (static_cast<Chest*>(item) && item->token == value) {
 							static_cast<Chest*>(item)->lock(key->token);
-							return;
 						}
 					}
 				}
 			}
+			keys.clear();
 			std::cout << "You do not possess the correct key!\n";
 			
 			break;
@@ -161,17 +172,16 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 					for (Connector* connector : connectors) {
 						if (connector->exit_direction == value) {
 							connector->unlock(key->token);
-							return;
 						}
 					}
 					for (Item* item : items) {
 						if (static_cast<Chest*>(item) && item->token == value) {
 							static_cast<Chest*>(item)->unlock(key->token);
-							return;
 						}
 					}
 				}
 			}
+			keys.clear();
 			std::cout << "You do not possess the correct key!\n";
 
 			break;
@@ -192,6 +202,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			}
 			break;
 		default:
+			std::cout << "I do not understand that order!\n";
 			break;
 		}
 	}
@@ -201,6 +212,10 @@ void Room::tick()
 {
 	for (Connector* connector : connectors) {
 		connector->tick();
+	}
+
+	for (NPC* npc : npcs) {
+		npc->tick();
 	}
 }
 

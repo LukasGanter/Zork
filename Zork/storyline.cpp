@@ -28,12 +28,12 @@ bool Storyline::getNextLine(std::string& nextLine)
 
 	if (currentStoryPoint >= story.size()) {
 		currentStoryPoint = 0;
-		return false;
+		return true;
 	}
 	else {
 		nextLine = story[currentStoryPoint];
 		currentStoryPoint++;
-		return true;
+		return false;
 	}
 }
 

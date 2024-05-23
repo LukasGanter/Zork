@@ -50,5 +50,6 @@ bool Storage::drop_item(Item* item)
 	}
 	else {
 		std::cout << "The storage is already full. It contains " << stored_item->title << "\n";
+		return false;
 	}
 }

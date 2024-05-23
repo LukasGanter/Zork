@@ -146,7 +146,7 @@ ValueTokens Tokenizer::parseValueToken(const std::string& user_token)
 	else if (Util::equals_strings(user_token, { "Mountains", "mountains" })) {
 		return ValueTokens::MOUNTAIN_ROOM;
 	}
-	else if (Util::equals_strings(user_token, { "Hut", "hut" })) {
+	else if (Util::equals_strings(user_token, { "Hut", "hut", "door", "Doorsearch mailbox"})) {
 		return ValueTokens::HUT_ROOM;
 	}
 	else if (Util::equals_strings(user_token, { "Ravine", "ravine" })) {

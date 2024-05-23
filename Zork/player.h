@@ -57,14 +57,13 @@ public:
 	bool drop_item(Room* room, const ValueTokens item);
 
 	/*
-	Tries to drop an item, specified by its token, into the specified storage container
+	Tries to drop the equipped item into the specified storage container
 
-	Input "storage":		the storage to drop the items into
-	Input "item_token":		the token of the item to be dropped
+	Input "storage":		the storage to drop the item into
 
-	Output:					If the item existed in the inventory of the player and was dropped to the storage
+	Output:					If the item existed in the inventory of the player and was dropped into the storage
 	*/
-	bool drop_item_into_storage(Storage* storage, const ValueTokens item_token);
+	bool drop_item_into_storage(Storage* storage);
 
 	/*
 	Drops all items from the inventory and adds them to the room the player is currently in
@@ -111,7 +110,7 @@ public:
 private:
 
 	Weapon* equiped_weapon;
-	const size_t max_inventory_size = 7;
+	const size_t max_inventory_size = 70;
 	std::vector<Item*> inventory;
 
 };

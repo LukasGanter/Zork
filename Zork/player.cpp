@@ -105,28 +105,16 @@ bool Player::drop_item(Room* room, const ValueTokens item)
 	}
 }
 
-bool Player::drop_item_into_storage(Storage* storage, const ValueTokens item_token)
+bool Player::drop_item_into_storage(Storage* storage)
 {
-	int itemToRemove = -1;
-	for (size_t i = 0; i < inventory.size(); i++) {
-		if (inventory[i]->token == item_token) {
-			itemToRemove = i;
-			break;
-		}
-	}
-
-	if (itemToRemove != -1) {
-
-		if (storage->drop_item(inventory[itemToRemove])) {
-			inventory.erase(inventory.begin() + itemToRemove);
-			return true;
-		}
-		else {
-			return false;
-		}
+	if (equiped_weapon == nullptr) {
+		std::cout << "You have no weapon equiped which could be stored away in the storage\n";
 	}
 	else {
-		std::cout << "You don´t possess such an item!\n";
+		if (storage->drop_item(equiped_weapon)) {
+			equiped_weapon = nullptr;
+			return true;
+		}
 		return false;
 	}
 }

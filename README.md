@@ -32,3 +32,25 @@ However with a reduction in the features i was able to finish a working version.
 I was not able to edit the provided skills sheed. For the pdf version i don´t have the necessary subscriptions
 and the word version is corrupted with my version of word (I have attached a screenshot inside the repositories "delivery" folder.)
 The skills tables are provided inside the "Skills Test Programming.pdf" file, for the projects i have submitted my portfolio.
+
+# Game instruction
+There are five rooms in the game, each one contains a letter. These letters combined give you a passcode which needs to be remembered and is necessary for collecting the medallion (Hint: Code consists of 5 numbers). 
+The game finishes once you go back to the old man and talk to him while having the medallion.
+As an input syntax, the game currently supports one order followed by a value. Order and value need to be separated by a space, the value is mostly made up of in game item names.
+Example: "take sword", "go east", etc.
+
+List of orders:
+- LOOK
+- TAKE
+- LOOT
+- DROP
+- STORE
+- REMEMBER
+- MOVE
+- TALK
+- READ
+- INVENTORY
+- EQUIP
+- UNEQUIP
+- LOCK
+- UNLOCK
