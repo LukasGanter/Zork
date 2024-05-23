@@ -10,6 +10,7 @@
 #include "medaillon.h"
 #include "shield.h"
 #include "sword.h"
+#include "character.h"
 
 World::World(const std::string& title, const std::string& description) :
     Entity(title, description)
@@ -19,6 +20,8 @@ World::World(const std::string& title, const std::string& description) :
     Item* mountain_item_1 = new Stick("small", "A small wooden stick", 1, 1, 2, 1);
     Item* mountain_item_2 = new Stick("big", "A big wooden stick", 3, 4, 2, 5);
     Item* mountain_item_3 = new LetterFragment("Fragment3", "A message from the king. ", "5 bandits are travelling the lands. Be aware!");
+    // Item* mountain_item_4 = new Chest();
+    Item* mountain_item_5 = new Key("Metalkey", "A large metal key, suitable for the door of a house", "7");
 
     Item* hut_item_1 = new BreakingRod("Iron rod", "A large, heavy iron rod designed for destroying obstacles on the way.", 3, 10, 5, 100);
     Item* hut_item_2 = new Sword("Sword of the sons", "A sleek, elegant weapon from ancient times.", 10, 2, 6, 40);
@@ -53,30 +56,56 @@ World::World(const std::string& title, const std::string& description) :
     Connector* treasure_connector_1 = new Connector("TreasureEntrance", "The opened hole with the rest of the wooden planks.", new Storyline({ "You walk back into the cave." }),
         ValueTokens::NORTH, false, "", 0, 0);
 
-    rooms.push_back(new Room("Mountains", "Outside starting area", player, {
-        new Connector("Door", "The door of the hut", new Storyline({"The door of the hut"}), ValueTokens::NORTH, true, "Metalkey", 0, 0),
-        new Connector("Bridge", "The bridge over the ravine", new Storyline({"You step on the bridge.", "You fall!", "Darkness surrounds you. Then your vision turns white.", "Hey, you are finally awake!"}),
-        ValueTokens::EAST, false, "", 10, 1)
-        }, {
+    NPC* hut_man = new NPC("Man", "An old man living in a remote mountain hut", 2, 1);
 
-        }, {
-            new Stick("small", "A small wooden stick", 1, 1, 2, 1),
-            new Stick("big", "A big wooden stick", 3, 4, 2, 5),
-            new LetterFragment("Fragment3", "A message from the king. ", "5 bandits are travelling the lands. Be aware!")
-        }));
-    rooms.push_back(new Room("Hut", "Hut and an old man", nullptr, {
-        new Connector("Door", "The door of the hut", new Storyline({"The door of the hut"}), ValueTokens::NORTH, true, "Metalkey", 0, 0),
-        }, {
-        }, {
-        }));
-    rooms.push_back(new Room("Cave", "A narrow, dark and wet passage through the mountain", nullptr, {}, {}, {}));
-    rooms.push_back(new Room("Ravine", "A narrow, deep ravine. Like a scar in the landscape. A small suspension bridge spans accross it.", nullptr, 
-{
-        }, {
-            new Key("Metalkey", "A large metal key, suitable for the door of a house", "7") 
-        }, {
-        }));
-    rooms.push_back(new Room("Treasures", "This is where the treasure chest hides", nullptr, {}, {}, {}));
+    // Mountain room
+    Room* room_mountain = new Room("Mountains", "Outside starting area", player,
+        { mountains_connector_1, mountains_connector_2 },
+        {},
+        { mountain_item_1, mountain_item_2, mountain_item_3, mountain_item_5 });
+
+    // Hut room
+    Room* room_hut = new Room("Hut", "Hut and an old man", nullptr,
+        { hut_connector_1 },
+        { hut_man },
+        { hut_item_1, hut_item_2, hut_item_3 });
+
+    // Ravine room
+    Room* room_ravine = new Room("Ravine", "A narrow, deep ravine. Like a scar in the landscape. A small suspension bridge spans accross it.", nullptr,
+        { ravine_connector_1 },
+        {  },
+        { ravine_item_1, ravine_item_2 });
+
+    // Cave room
+    Room* room_cave = new Room("Cave", "A narrow, dark and wet passage through the mountain", nullptr,
+        { cave_connector_1, cave_connector_2, cave_connector_3 },
+        {  },
+        { cave_item_1 });
+
+    // Treasure room
+    Room* room_treasure = new Room("Treasures", "This is where the treasure chest hides", nullptr,
+        { treasure_connector_1 },
+        {  },
+        { treasure_item_2, treasure_item_3 });
+
+    mountains_connector_1->init_target(room_hut);
+    mountains_connector_2->init_target(room_ravine);
+
+    hut_connector_1->init_target(room_mountain);
+
+    ravine_connector_1->init_target(room_cave);
+
+    cave_connector_1->init_target(room_ravine);
+    cave_connector_2->init_target(room_treasure);
+    cave_connector_3->init_target(room_mountain);
+
+    treasure_connector_1->init_target(room_cave);
+
+    rooms.push_back(room_mountain);
+    rooms.push_back(room_hut);
+    rooms.push_back(room_ravine);
+    rooms.push_back(room_cave);
+    rooms.push_back(room_treasure);
 }
 
 World::~World()
