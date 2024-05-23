@@ -10,7 +10,7 @@ class Room;
 class Connector : public Entity
 {
 public:
-	Connector(const std::string& title, const std::string& description, Storyline* story, const ValueTokens exit_direction, bool is_locked, const std::string& suitable_key, int door_blocked_by, int block_resistance);
+	Connector(const std::string& title, const std::string& description, Storyline* story, const ValueTokens exit_direction, bool is_locked, const ValueTokens suitable_key, int door_blocked_by, int block_resistance);
 	~Connector();
 
 	/*
@@ -36,22 +36,20 @@ public:
 	/*
 	Tries to lock the given connector with the provided key
 
-	Input "key_type":	the value which the user entered. Has to be ValueTokens::Key
-	Input "key_id":		the key id which the user entered. Has to match the doors key id
+	Input "key":	the key value which the user entered. 
 
-	Output:				Whether the door was successfully locked
+	Output:			Whether the door was successfully locked
 	*/
-	bool lock(const ValueTokens key_type, const std::string& key_id);
+	bool lock(const ValueTokens key);
 
 	/*
 	Tries to unlock the given connector with the provided key
 
-	Input "key_type":	the value which the user entered. Has to be ValueTokens::Key
-	Input "key_id":		the key id which the user entered. Has to match the doors key id
+	Input "key":	the key value which the user entered
 
-	Output:				Whether the door was successfully unlocked
+	Output:			Whether the door was successfully unlocked
 	*/
-	bool unlock(const ValueTokens key_type, const std::string& key_id);
+	bool unlock(const ValueTokens key);
 
 	/*
 	Tries to unblock the given connector
@@ -69,7 +67,7 @@ private:
 	Room* target;
 	const ValueTokens exit_direction;
 	bool is_locked;
-	const std::string& suitable_key;
+	const ValueTokens suitable_key;
 	int door_blocked_by; // If value is <= 0 then the exit is not blocked
 	int block_resistance;
 };

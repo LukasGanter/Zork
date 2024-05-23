@@ -2,7 +2,7 @@
 #include "room.h"
 #include <iostream>
 
-Connector::Connector(const std::string& title, const std::string& description, Storyline* story, const ValueTokens exit_direction, bool is_locked, const std::string& suitable_key, int door_blocked_by, int block_resistance) :
+Connector::Connector(const std::string& title, const std::string& description, Storyline* story, const ValueTokens exit_direction, bool is_locked, const ValueTokens suitable_key, int door_blocked_by, int block_resistance) :
 	Entity(title, description), story(story), target(target), exit_direction(exit_direction), is_locked(is_locked), suitable_key(suitable_key), door_blocked_by(door_blocked_by), player(nullptr), block_resistance(block_resistance)
 {
 	
@@ -52,12 +52,12 @@ bool Connector::take_connector(const ValueTokens& direction, Player* player)
 	return false;
 }
 
-bool Connector::lock(const ValueTokens key_type, const std::string& key_id)
+bool Connector::lock(const ValueTokens key)
 {
 	if (is_locked) {
 		std::cout << "The door is already locked!\n";
 		return true;
-	} else if (key_type == ValueTokens::KEY_METAL && suitable_key.compare(key_id) == 0) {
+	} else if (suitable_key == key) {
 		is_locked = true;
 		std::cout << "Door locked!\n";
 		return true;
@@ -68,13 +68,13 @@ bool Connector::lock(const ValueTokens key_type, const std::string& key_id)
 	}
 }
 
-bool Connector::unlock(const ValueTokens key_type, const std::string& key_id)
+bool Connector::unlock(const ValueTokens key)
 {
 	if (!is_locked) {
 		std::cout << "The door is already unlocked!\n";
 		return true;
 	}
-	else if (key_type == ValueTokens::KEY_METAL && suitable_key.compare(key_id) == 0) {
+	else if (suitable_key == key) {
 		is_locked = false;
 		std::cout << "Door unlocked!\n";
 		return true;
