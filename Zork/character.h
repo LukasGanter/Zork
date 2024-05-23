@@ -10,4 +10,8 @@ public:
 
 public:
 	virtual void tick();
+
+public:
+
+	bool is_alive;
 };
