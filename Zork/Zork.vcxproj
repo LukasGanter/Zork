@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="breakingRod.h" />
     <ClInclude Include="character.h" />
+    <ClInclude Include="chest.h" />
     <ClInclude Include="collectible.h" />
     <ClInclude Include="connector.h" />
     <ClInclude Include="entity.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="room.h" />
     <ClInclude Include="shield.h" />
     <ClInclude Include="stick.h" />
+    <ClInclude Include="storage.h" />
     <ClInclude Include="storyline.h" />
     <ClInclude Include="sword.h" />
     <ClInclude Include="tokenizer.h" />

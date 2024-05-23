@@ -58,6 +58,9 @@
     <Filter Include="Quelldateien\story">
       <UniqueIdentifier>{e89a89a2-c3a4-4c10-8c23-fa26a894dda6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\items\storage">
+      <UniqueIdentifier>{1bc14484-8b97-44c7-9e61-cafb357c21db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -184,6 +187,12 @@
     </ClInclude>
     <ClInclude Include="storyline.h">
       <Filter>Headerdateien\story</Filter>
+    </ClInclude>
+    <ClInclude Include="chest.h">
+      <Filter>Headerdateien\items\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="storage.h">
+      <Filter>Headerdateien\items\storage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
