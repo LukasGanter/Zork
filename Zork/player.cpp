@@ -63,13 +63,17 @@ bool Player::unequip_weapon(Room* room)
 	}
 }
 
-bool Player::take_item(Item* item)
+bool Player::take_item(Item* item, const ValueTokens token)
 {
 	if (!item->is_takable) {
 		std::cout <<  item->title << " is to heavy to pick up.\n";
 		return false;
-	} else if (inventory.size() < max_inventory_size) {
-		std::cout << "You take " << item->title << " from the floor and put it in your bag.\n";
+	}
+	else if (item->token != token) {
+		return false;
+	}
+	else if (inventory.size() < max_inventory_size) {
+		std::cout << "You take the " << item->title << " and put it in your bag.\n";
 		inventory.push_back(item);
 		return true;
 	}

@@ -23,7 +23,6 @@ Connector::~Connector()
 void Connector::init_target(Room* target)
 {
 	this->target = target;
-	this->target->drop_item(nullptr);
 }
 
 void Connector::tick()

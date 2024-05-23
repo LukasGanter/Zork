@@ -23,7 +23,7 @@ public:
 
 	Output:			If the item was added to the inventory
 	*/
-	virtual bool take_item(Player* player, const ValueTokens token);
+	virtual bool take_item(Player* player);
 
 	/*
 	Tries to place an item in the storage

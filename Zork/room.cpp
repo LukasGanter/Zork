@@ -1,9 +1,10 @@
 #include "room.h"
 #include <iostream>
 
-Room::Room(const std::string& title, const std::string& description, Player* player, const std::vector<Connector*>& connectors, const std::vector<NPC*>& npcs, const std::vector<Item*>& items) :
+Room::Room(const std::string& title, const std::string& description, Player* player, std::initializer_list<Connector*> connectors, std::initializer_list<NPC*> npcs, std::initializer_list<Item*> items) :
 	Entity(title, description), player(player), connectors(connectors), npcs(npcs), items(items)
 {
+
 }
 
 Room::~Room()
@@ -46,17 +47,28 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			// Prints the information about the current room to the screen
 			look_around();
 			break;
-		case OrderTokens::TAKE:
+		case OrderTokens::LOOT:
+			if (value == ValueTokens::UNKNOWN_VALUE) {
+				std::cout << "Nothing can not be looted. Tell me want you want to loot.\n";
+				break;
+			}
 			for (size_t i = 0; i < items.size(); i++) {
 				Item* item = items[i];
-				Storage* cast_item = static_cast<Storage*>(item);
-				if (cast_item->take_item(player, value)) {
+				if (static_cast<Storage*>(item) && item->token == value) {
+					static_cast<Storage*>(item)->take_item(player);
 					break;
 				}
-				else {
-					if (player->take_item(item)) {
-						item_index = i;
-					}
+			}
+			break;
+		case OrderTokens::TAKE:
+			if (value == ValueTokens::UNKNOWN_VALUE) {
+				std::cout << "Nothing can not be taken. Tell me want you want to take.\n";
+				break;
+			}
+			for (size_t i = 0; i < items.size(); i++) {
+				Item* item = items[i];
+				if (player->take_item(item, value)) {
+					item_index = i;
 				}
 			}
 
@@ -64,7 +76,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 				items.erase(items.begin() + item_index);
 			}
 			else {
-				std::cout << "There is not item with that name in this room or any storage containers!\n";
+				std::cout << "There is no item with that name in this room!\n";
 			}
 			break;
 		case OrderTokens::DROP:
@@ -120,7 +132,9 @@ void Room::join_room(Player* player)
 
 void Room::drop_item(Item* item)
 {
-	items.push_back(item);
+	if (item != nullptr) {
+		items.push_back(item);
+	}
 }
 
 void Room::look_around()

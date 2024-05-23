@@ -7,6 +7,7 @@ enum class OrderTokens
 	UNKNOWN_ORDER,
 	LOOK,
 	TAKE,
+	LOOT,
 	DROP,
 	MOVE,
 	ATTACK,

@@ -36,13 +36,14 @@ public:
 	bool unequip_weapon(Room* room);
 
 	/*
-	Takes the specified item from the room or a storage and adds it to the inventory if the inventory is not full
+	Takes the specified item from the room or a storage and adds it to the inventory if the inventory is not full and if the token matches
 
-	Input "item":	the item to be taken
+	Input "item":	an item option
+	Input "token":	the token which the user wants to take
 
 	Output:			If the item was added to the inventory
 	*/
-	bool take_item(Item* item);
+	bool take_item(Item* item, const ValueTokens token);
 
 	/*
 	Drops the specified item into the room

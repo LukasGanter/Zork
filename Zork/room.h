@@ -12,7 +12,7 @@
 class Room : public Entity
 {
 public:
-	Room(const std::string& title, const std::string& description, Player* player, const std::vector<Connector*>& connectors, const std::vector<NPC*>& npcs, const std::vector<Item*>& items);
+	Room(const std::string& title, const std::string& description, Player* player, std::initializer_list<Connector*> connectors, std::initializer_list<NPC*> npcs, std::initializer_list<Item*> items);
 	~Room();
 
 public:

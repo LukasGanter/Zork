@@ -39,7 +39,7 @@ public:
 
 	Output:			If the item was added to the inventory
 	*/
-	bool take_item(Player* player, const ValueTokens token) override;
+	bool take_item(Player* player) override;
 
 	/*
 	Tries to place an item in the storage 

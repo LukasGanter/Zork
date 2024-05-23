@@ -26,6 +26,9 @@ OrderTokens Tokenizer::parseOrderToken(const std::string& user_token)
 	if (Util::equals_strings(user_token, { "look" })) {
 		return OrderTokens::LOOK;
 	}
+	else if (Util::equals_strings(user_token, { "loot" })) {
+		return OrderTokens::LOOT;
+	}
 	else if (Util::equals_strings(user_token, { "take", "pick", "aquire" })) {
 		return OrderTokens::TAKE;
 	}
@@ -98,7 +101,7 @@ ValueTokens Tokenizer::parseValueToken(const std::string& user_token)
 	else if (Util::equals_strings(user_token, { "key", "metal key"})) {
 		return ValueTokens::KEY_METAL;
 	}
-	else if (Util::equals_strings(user_token, { "box", "postbox"})) {
+	else if (Util::equals_strings(user_token, { "box", "postbox", "mailbox"})) {
 		return ValueTokens::POSTBOX;
 	}
 	else if (Util::equals_strings(user_token, { "rod", "iron rod" })) {

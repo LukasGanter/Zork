@@ -42,6 +42,7 @@ int main()
                 std::cout << "\n";
                 world.on_player_input(input);
                 input = "";
+                std::cout << "\n";
             }
         }
 
