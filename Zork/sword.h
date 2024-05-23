@@ -5,7 +5,7 @@
 class Sword : public Weapon
 {
 public:
-	Sword(const std::string& title, const std::string& description, const int attack_points, const int destruction_points, const int defence_points, const int durability);
+	Sword(const std::string& title, const std::string& description, const ValueTokens token, const int attack_points, const int destruction_points, const int defence_points, const int durability);
 	~Sword();
 
 public:

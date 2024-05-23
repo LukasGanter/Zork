@@ -65,7 +65,10 @@ bool Player::unequip_weapon(Room* room)
 
 bool Player::take_item(Item* item)
 {
-	if (inventory.size() < max_inventory_size) {
+	if (!item->is_takable) {
+		std::cout <<  item->title << " is to heavy to pick up.\n";
+		return false;
+	} else if (inventory.size() < max_inventory_size) {
 		std::cout << "You take " << item->title << " from the floor and put it in your bag.\n";
 		inventory.push_back(item);
 		return true;
@@ -94,6 +97,32 @@ bool Player::drop_item(Room* room, const ValueTokens item_type, const std::strin
 	}
 	else {
 		std::cout << "You don´t possess an item with the name " << item_id << "!\n";
+		return false;
+	}
+}
+
+bool Player::drop_item_into_storage(Storage* storage, const ValueTokens item_token)
+{
+	int itemToRemove = -1;
+	for (size_t i = 0; i < inventory.size(); i++) {
+		if (inventory[i]->token == item_token) {
+			itemToRemove = i;
+			break;
+		}
+	}
+
+	if (itemToRemove != -1) {
+
+		if (storage->drop_item(inventory[itemToRemove])) {
+			inventory.erase(inventory.begin() + itemToRemove);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	else {
+		std::cout << "You don´t possess such an item!\n";
 		return false;
 	}
 }

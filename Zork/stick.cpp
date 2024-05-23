@@ -1,8 +1,8 @@
 #include "stick.h"
 #include <iostream>
 
-Stick::Stick(const std::string& title, const std::string& description, const int attack_points, const int destruction_points, const int defence_points, const int durability) :
-	Weapon(title, description, attack_points, destruction_points, defence_points, durability)
+Stick::Stick(const std::string& title, const std::string& description, const ValueTokens token, const int attack_points, const int destruction_points, const int defence_points, const int durability) :
+	Weapon(title, description, token, attack_points, destruction_points, defence_points, durability)
 {
 }
 

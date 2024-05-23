@@ -4,6 +4,7 @@
 #include "weapon.h"
 #include <vector>
 #include "tokenizer.h"
+#include "storage.h"
 
 class Room;
 
@@ -36,7 +37,7 @@ public:
 	bool unequip_weapon(Room* room);
 
 	/*
-	Takes the specified item from the room and adds it to the inventory, if the inventory is not full
+	Takes the specified item from the room or a storage and adds it to the inventory if the inventory is not full
 
 	Input "item":	the item to be taken
 
@@ -45,15 +46,25 @@ public:
 	bool take_item(Item* item);
 
 	/*
-	Equips the specified weapon, if it is present inside the inventory and if no other weapon is currently equipped
+	Drops the specified item into the room
 
 	Input "room":			the room to drop the items into
-	Input "weapon_type":	the type of the weapon (sword, stick, ...)
-	Input "weapon_id":		the unique id of the weapon
+	Input "item_type":		the type of the item 
+	Input "item_id":		the unique id of the item
 
 	Output:					If the weapon was equipped
 	*/
 	bool drop_item(Room* room, const ValueTokens item_type, const std::string& item_id);
+
+	/*
+	Tries to drop an item, specified by its token, into the specified storage container
+
+	Input "storage":		the storage to drop the items into
+	Input "item_token":		the token of the item to be dropped
+
+	Output:					If the item existed in the inventory of the player and was dropped to the storage
+	*/
+	bool drop_item_into_storage(Storage* storage, const ValueTokens item_token);
 
 	/*
 	Drops all items from the inventory and adds them to the room the player is currently in
