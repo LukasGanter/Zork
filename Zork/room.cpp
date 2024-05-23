@@ -131,7 +131,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			if (player->get_keys_in_inventory(keys)) {
 				for (Key* key : keys) {
 					for (Connector* connector : connectors) {
-						if (connector->exit_direction == value) {
+						if (connector->exit_direction == value || connector->token == value) {
 							connector->lock(key->token);
 							return;
 						}

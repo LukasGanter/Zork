@@ -119,7 +119,7 @@ ValueTokens Tokenizer::parseValueToken(const std::string& user_token)
 	else if (Util::equals_strings(user_token, { "shield", "sturdy shield"})) {
 		return ValueTokens::STURDY_SHIELD;
 	}
-	else if (Util::equals_strings(user_token, { "letter mountains" })) {
+	else if (Util::equals_strings(user_token, { "letter mountain" })) {
 		return ValueTokens::LETTER_FRAGMENT_MOUNTAINS;
 	}
 	else if (Util::equals_strings(user_token, { "letter hut" })) {
@@ -137,11 +137,26 @@ ValueTokens Tokenizer::parseValueToken(const std::string& user_token)
 	else if (Util::equals_strings(user_token, { "medallion", "wisedom"})) {
 		return ValueTokens::MEDALLION_WISEDOM;
 	}
-	else if (Util::equals_strings(user_token, { "treasure chest, chest" })) {
+	else if (Util::equals_strings(user_token, { "treasure chest", "chest" })) {
 		return ValueTokens::CHEST_TREASURE;
 	}
 	else if (Util::equals_strings(user_token, { "21591"})) {
 		return ValueTokens::PASSCODE_TREASURE_CHEST;
+	}
+	else if (Util::equals_strings(user_token, { "Mountains", "mountains" })) {
+		return ValueTokens::MOUNTAIN_ROOM;
+	}
+	else if (Util::equals_strings(user_token, { "Hut", "hut" })) {
+		return ValueTokens::HUT_ROOM;
+	}
+	else if (Util::equals_strings(user_token, { "Ravine", "ravine" })) {
+		return ValueTokens::RAVINE_ROOM;
+	}
+	else if (Util::equals_strings(user_token, { "Cave", "cave"})) {
+		return ValueTokens::CAVE_ROOM;
+	}
+	else if (Util::equals_strings(user_token, { "treasures", "Treasures"})) {
+		return ValueTokens::TREASURE_ROOM;
 	}
 
 	return ValueTokens::UNKNOWN_VALUE;

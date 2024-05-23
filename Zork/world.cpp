@@ -38,24 +38,26 @@ World::World(const std::string& title, const std::string& description) :
 
     Item* cave_item_1 = new LetterFragment("letter cave", "A moving stone", ValueTokens::LETTER_FRAGMENT_CAVE, "I swear, the big stone in the corner moved. 9 times!");
 
-    Connector* mountains_connector_1 = new Connector("Door", "The door of the hut", new Storyline({ "The door of the hut" }), ValueTokens::NORTH, true, ValueTokens::KEY_METAL, 0, 0);
-    Connector* mountains_connector_2 = new Connector("Bridge", "The bridge over the ravine", new Storyline({ "You step on the bridge.", "Its more slippery than it looked before", "You fall!", "Darkness surrounds you. Then your vision turns white.", "Hey, you are finally awake!" }),
+    Connector* mountains_connector_1 = new Connector("Door", "The north door of the hut", ValueTokens::HUT_ROOM, new Storyline({ "The door of the hut" }), ValueTokens::NORTH, true, ValueTokens::KEY_METAL, 0, 0);
+    Connector* mountains_connector_2 = new Connector("Bridge", "The east bridge over the ravine", ValueTokens::RAVINE_ROOM, new Storyline({ "You step on the bridge.", "Its more slippery than it looked before", "You fall!", "Darkness surrounds you. Then your vision turns white.", "Hey, you are finally awake!" }),
         ValueTokens::EAST, false, ValueTokens::UNKNOWN_VALUE, 10, 1);
 
-    Connector* hut_connector_1 = new Connector("InnerDoor", "The inside door of the hut", new Storyline({ "The inside door of the hut" }), ValueTokens::SOUTH, false, ValueTokens::KEY_METAL, 0, 0);
+    Connector* hut_connector_1 = new Connector("Mountains", "The door to the ouside mountains area in the south", ValueTokens::MOUNTAIN_ROOM, 
+        new Storyline({ "You step through the door into blinding lights" }), ValueTokens::SOUTH, false, ValueTokens::KEY_METAL, 0, 0);
 
-    Connector* ravine_connector_1 = new Connector("CaveEntrance", "A small black hole, leading somewhere into the darkness", new Storyline({ "You knee in front of the hole.",
+    Connector* ravine_connector_1 = new Connector("Cave", "A small black hole in the west, leading somewhere into the darkness", ValueTokens::CAVE_ROOM, new Storyline({ "You knee in front of the hole.",
         "A strong ice cold wind blows from the dark void.", "With a big grown you lay on the ground and rob forwards" }), ValueTokens::WEST, false, ValueTokens::UNKNOWN_VALUE, 0, 0);
 
-    Connector* cave_connector_1 = new Connector("CaveExit", "A small hole with a dim light at the end", new Storyline({ "Like a moth, you are craving for light.", "As fast as possible you rob through the small gap" }),
+    Connector* cave_connector_1 = new Connector("Ravine", "A small hole in the east with a dim light at the end", ValueTokens::RAVINE_ROOM, new Storyline({ "Like a moth, you are craving for light.", "As fast as possible you rob through the small gap" }),
         ValueTokens::EAST, false, ValueTokens::UNKNOWN_VALUE, 0, 0);
-    Connector* cave_connector_2 = new Connector("BoardedHall", "Boarded with heavy wood bars, an exit can be seen in the south part of the cave", new Storyline({ "After hitting the bars for what feels like eternity, you finally break through.", "Before you opens a huge space, empty and illuminated by a mysterious light." }),
+    Connector* cave_connector_2 = new Connector("Treasures", "Boarded with heavy wood bars, an exit can be seen in the south part of the cave", ValueTokens::TREASURE_ROOM
+        , new Storyline({ "After hitting the bars for what feels like eternity, you finally break through.", "Before you opens a huge space, empty and illuminated by a mysterious light." }),
         ValueTokens::SOUTH, false, ValueTokens::UNKNOWN_VALUE, 100, 10);
-    Connector* cave_connector_3 = new Connector("Skylight", "At the top of the cave there is a perfectly round opening. Climbing to it seems possible.",
+    Connector* cave_connector_3 = new Connector("Mountains", "At the top of the cave there is a perfectly round opening. Climbing to it seems possible.", ValueTokens::MOUNTAIN_ROOM,
         new Storyline({ "You climb the wet and rough rocks of the cave wall", "With your last strength you reach the opening and squeeze yourself in.", "Do you imagine it or does it gets warmer?" }),
         ValueTokens::UP, false, ValueTokens::UNKNOWN_VALUE, 0, 0);
 
-    Connector* treasure_connector_1 = new Connector("TreasureEntrance", "The opened hole with the rest of the wooden planks.", new Storyline({ "You walk back into the cave." }),
+    Connector* treasure_connector_1 = new Connector("Cave", "The opened hole in the north with the rest of the wooden planks.", ValueTokens::CAVE_ROOM, new Storyline({ "You walk back into the cave." }),
         ValueTokens::NORTH, false, ValueTokens::UNKNOWN_VALUE, 0, 0);
 
     NPC* hut_man = new NPC("Man", "An old man living in a remote mountain hut", ValueTokens::OLD_MAN, 2, 1, 

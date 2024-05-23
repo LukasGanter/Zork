@@ -10,7 +10,7 @@ class Room;
 class Connector : public Entity
 {
 public:
-	Connector(const std::string& title, const std::string& description, Storyline* story, const ValueTokens exit_direction, bool is_locked, const ValueTokens suitable_key, int door_blocked_by, int block_resistance);
+	Connector(const std::string& title, const std::string& description, const ValueTokens token, Storyline* story, const ValueTokens exit_direction, bool is_locked, const ValueTokens suitable_key, int door_blocked_by, int block_resistance);
 	~Connector();
 
 	/*
@@ -71,6 +71,7 @@ private:
 	int block_resistance;
 
 public:
-	const ValueTokens exit_direction;
 
+	const ValueTokens token;
+	const ValueTokens exit_direction;
 };
