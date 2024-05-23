@@ -16,6 +16,10 @@ I implemented the software with scalability in mind. Most of the features can ea
 Some features are partially included but not activated in the final release. This is due to the time issue explained in the section "Problems".
 I also reduced the effort to fill the game with high quality textual content. Some parts are written in a way which shows the functionality, but is not typographical pleasing. This is again due to time issues. 
 
+# Special features
+As a special feature i implemented a locking and unlocking mechanism for doors and chests. Both options are present in the game on the main player path.
+Implemented by storing the key id inside the door / chest classes and comparing it to the ids of available key objects inside the players inventory.
+
 # Problems
 The biggest issue i faced was the difference between "normal" c++ and the version the Unreal Engine uses. 
 Over the last years i mostly developed code using the Unreal Engine, which uses a lot of other classes and styleguides.

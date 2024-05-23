@@ -26,7 +26,7 @@ OrderTokens Tokenizer::parseOrderToken(const std::string& user_token)
 	if (Util::equals_strings(user_token, { "look" })) {
 		return OrderTokens::LOOK;
 	}
-	else if (Util::equals_strings(user_token, { "loot" })) {
+	else if (Util::equals_strings(user_token, { "loot", "search"})) {
 		return OrderTokens::LOOT;
 	}
 	else if (Util::equals_strings(user_token, { "take", "pick", "aquire" })) {

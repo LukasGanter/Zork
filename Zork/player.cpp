@@ -159,7 +159,7 @@ void Player::read(const ValueTokens token)
 	for (Item* item : inventory) {
 		if (item->token == token) {
 			if (static_cast<Collectible*>(item)) {
-				static_cast<Collectible*>(item)->read_story();
+				item->print_information();
 			}
 			else {
 				std::cout << "This item does not have a story.\n";
@@ -199,7 +199,7 @@ void Player::remember_key(const ValueTokens new_key)
 				return;
 			}
 		}
-		inventory.push_back(new Key("Passcode", "A number sequence, might be relevant later on", new_key, ""));
+		inventory.push_back(new Key("Passcode", "A number sequence, might be relevant later on.", new_key));
 		std::cout << "You write the passcode onto a piece of old fabric and put it in your backpack. You never know when you need it.\n";
 	}
 	else {

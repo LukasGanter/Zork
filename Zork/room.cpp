@@ -72,8 +72,11 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			}
 			for (size_t i = 0; i < items.size(); i++) {
 				Item* item = items[i];
-				if (player->take_item(item, value)) {
-					item_index = i;
+				if (item->token == value) {
+					if (player->take_item(item, value)) {
+						item_index = i;
+						break;
+					}
 				}
 			}
 
@@ -96,6 +99,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 
 			break;
 		case OrderTokens::ATTACK:
+
 			break;
 		case OrderTokens::DEFEND:
 			break;
@@ -175,7 +179,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			// Prints the information of all items in the inventory to the screen
 			player->search_inventory();
 			break;
-		case OrderTokens::MOVE:
+		case OrderTokens::MOVE: 
 			for (Connector* connector : connectors) {
 				if (connector->take_connector(value, player)) {
 					took_connector = true;
@@ -251,12 +255,21 @@ Item* Room::get_item_for_token(const ValueTokens token)
 void Room::look_around()
 {
 	print_information();
+
+	std::cout << "\nAll available ways: \n";
+
 	for (Connector* connector : connectors) {
 		connector->print_information();
 	}
+
+	std::cout << "\nAll npcs in the area: \n";
+
 	for (NPC* npc : npcs) {
 		npc->print_information();
 	}
+
+	std::cout << "\nAll items on the floor: \n";
+
 	for (Item* item : items) {
 		item->print_information();
 	}

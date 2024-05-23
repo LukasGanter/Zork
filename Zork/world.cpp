@@ -20,27 +20,27 @@ World::World(const std::string& title, const std::string& description) :
 
     Item* mountain_item_1 = new Stick("small stick", "A small wooden stick", ValueTokens::SMALL_STICK, 1, 1, 2, 1);
     Item* mountain_item_2 = new Stick("large stick", "A big wooden stick", ValueTokens::LARGE_STICK, 3, 4, 2, 5);
-    Item* mountain_item_3 = new LetterFragment("letter mountain", "A message from the king. ", ValueTokens::LETTER_FRAGMENT_MOUNTAINS, "5 bandits are travelling the lands. Be aware!");
-    Item* mountain_item_4 = new Key("metal key", "A large metal key, suitable for the door of a house", ValueTokens::KEY_METAL, "7");
+    Item* mountain_item_3 = new LetterFragment("letter mountain", "A message from the king.\n5 bandits are travelling the lands.Be aware!", ValueTokens::LETTER_FRAGMENT_MOUNTAINS);
+    Item* mountain_item_4 = new Key("metal key", "A large metal key, suitable for the door of a house", ValueTokens::KEY_METAL);
     Item* mountain_item_5 = new Chest("postbox", "A small wooden box in the middle of the field, adjacent to the house", ValueTokens::POSTBOX, mountain_item_4, false, ValueTokens::UNKNOWN_VALUE);
 
     Item* hut_item_1 = new BreakingRod("iron rod", "A large, heavy iron rod designed for destroying obstacles on the way.", ValueTokens::IRON_ROD, 3, 10, 5, 100);
     Item* hut_item_2 = new Sword("sword of the sons", "A sleek, elegant weapon from ancient times.", ValueTokens::SWORD_OF_THE_SONS, 10, 2, 6, 40);
-    Item* hut_item_3 = new LetterFragment("letter hut", "Estate of the great hunter", ValueTokens::LETTER_FRAGMENT_HUT
-        , "Inside the estate there are two of my once greatest possessions.\nThe sword of the sons and the medaillon of the wisedom.");
+    Item* hut_item_3 = new LetterFragment("letter hut", "Estate of the great hunter\nInside the estate there are two of my once greatest possessions.\nThe sword of the sons and the medaillon of the wisedom.",
+        ValueTokens::LETTER_FRAGMENT_HUT);
 
-    Item* treasure_item_1 = new Medallion("medallion", "The medallion of wisedom", ValueTokens::MEDALLION_WISEDOM, "The engraving reads: The medallion of wisedom");
-    Item* treasure_item_2 = new LetterFragment("letter treasure", "Cursed treasures", ValueTokens::LETTER_FRAGMENT_TREASURE_ROOM, "The single treasure in this room is cursed.");
+    Item* treasure_item_1 = new Medallion("medallion", "The engraving reads: The medallion of wisedom", ValueTokens::MEDALLION_WISEDOM);
+    Item* treasure_item_2 = new LetterFragment("letter treasure", "Cursed treasures.\nThe single treasure in this room is cursed.", ValueTokens::LETTER_FRAGMENT_TREASURE_ROOM);
     Item* treasure_item_3 = new Chest("treasure chest", "A large wooden chest with golden metal framings. Must contain valuable things!", ValueTokens::CHEST_TREASURE, treasure_item_1, true, ValueTokens::PASSCODE_TREASURE_CHEST);
 
-    Item* ravine_item_1 = new LetterFragment("letter ravine", "A planned trap", ValueTokens::LETTER_FRAGMENT_RAVINE, "The sturdy bridge with one hole");
+    Item* ravine_item_1 = new LetterFragment("letter ravine", "A planned trap.\nA suspension bridge with one loose board.", ValueTokens::LETTER_FRAGMENT_RAVINE);
     Item* ravine_item_2 = new Shield("sturdy shield", "A sturdy round shield", ValueTokens::STURDY_SHIELD, 1, 1, 10, 80);
 
-    Item* cave_item_1 = new LetterFragment("letter cave", "A moving stone", ValueTokens::LETTER_FRAGMENT_CAVE, "I swear, the big stone in the corner moved. 9 times!");
+    Item* cave_item_1 = new LetterFragment("letter cave", "So dark that the light of the torch does not reach the far sides.\nI swear, the big stone in the corner moved. 9 times!", ValueTokens::LETTER_FRAGMENT_CAVE);
 
     Connector* mountains_connector_1 = new Connector("Door", "The north door of the hut", ValueTokens::HUT_ROOM, new Storyline({ "The door of the hut" }), ValueTokens::NORTH, true, ValueTokens::KEY_METAL, 0, 0);
     Connector* mountains_connector_2 = new Connector("Bridge", "The east bridge over the ravine", ValueTokens::RAVINE_ROOM, new Storyline({ "You step on the bridge.", "Its more slippery than it looked before", "You fall!", "Darkness surrounds you. Then your vision turns white.", "Hey, you are finally awake!" }),
-        ValueTokens::EAST, false, ValueTokens::UNKNOWN_VALUE, 10, 1);
+        ValueTokens::EAST, false, ValueTokens::UNKNOWN_VALUE, 0, 0);
 
     Connector* hut_connector_1 = new Connector("Mountains", "The door to the ouside mountains area in the south", ValueTokens::MOUNTAIN_ROOM, 
         new Storyline({ "You step through the door into blinding lights" }), ValueTokens::SOUTH, false, ValueTokens::KEY_METAL, 0, 0);
@@ -52,7 +52,7 @@ World::World(const std::string& title, const std::string& description) :
         ValueTokens::EAST, false, ValueTokens::UNKNOWN_VALUE, 0, 0);
     Connector* cave_connector_2 = new Connector("Treasures", "Boarded with heavy wood bars, an exit can be seen in the south part of the cave", ValueTokens::TREASURE_ROOM
         , new Storyline({ "After hitting the bars for what feels like eternity, you finally break through.", "Before you opens a huge space, empty and illuminated by a mysterious light." }),
-        ValueTokens::SOUTH, false, ValueTokens::UNKNOWN_VALUE, 100, 10);
+        ValueTokens::SOUTH, false, ValueTokens::UNKNOWN_VALUE, 0, 0);
     Connector* cave_connector_3 = new Connector("Mountains", "At the top of the cave there is a perfectly round opening. Climbing to it seems possible.", ValueTokens::MOUNTAIN_ROOM,
         new Storyline({ "You climb the wet and rough rocks of the cave wall", "With your last strength you reach the opening and squeeze yourself in.", "Do you imagine it or does it gets warmer?" }),
         ValueTokens::UP, false, ValueTokens::UNKNOWN_VALUE, 0, 0);
@@ -70,13 +70,13 @@ World::World(const std::string& title, const std::string& description) :
             "Wow, it look exactly like i remember it. I can not thank you enought."}));
 
     // Mountain room
-    Room* room_mountain = new Room("Mountains", "Outside starting area", player,
+    Room* room_mountain = new Room("Mountains", "A far and open landscape.", player,
         { mountains_connector_1, mountains_connector_2 },
         {},
         { mountain_item_1, mountain_item_2, mountain_item_3, mountain_item_5 });
 
     // Hut room
-    Room* room_hut = new Room("Hut", "Hut and an old man", nullptr,
+    Room* room_hut = new Room("Hut", "A small house, completely isolated. Home of the old man", nullptr,
         { hut_connector_1 },
         { hut_man },
         { hut_item_1, hut_item_2, hut_item_3 });

@@ -4,15 +4,7 @@
 class Collectible : public Item
 {
 public:
-	Collectible(const std::string& title, const std::string& description, const ValueTokens token, const std::string& content);
+	Collectible(const std::string& title, const std::string& description, const ValueTokens token);
 	~Collectible();
 
-	/*
-	Prints the story for this collectible to the console
-	*/
-	void read_story();
-
-protected:
-
-	const std::string& content;
 };
