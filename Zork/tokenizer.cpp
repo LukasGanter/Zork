@@ -86,53 +86,53 @@ ValueTokens Tokenizer::parseValueToken(const std::string& user_token)
 	else if (Util::equals_strings(user_token, { "down" })) {
 		return ValueTokens::DOWN;
 	}
-	else if (Util::equals_strings(user_token, { "golem" })) {
-		return ValueTokens::GOLEM;
+	else if (Util::equals_strings(user_token, { "man", "old man"})) {
+		return ValueTokens::OLD_MAN;
 	}
-	else if (Util::equals_strings(user_token, { "leopard" })) {
-		return ValueTokens::LEOPARD;
+	else if (Util::equals_strings(user_token, { "small stick" })) {
+		return ValueTokens::SMALL_STICK;
 	}
-	else if (Util::equals_strings(user_token, { "father" })) {
-		return ValueTokens::FATHER;
+	else if (Util::equals_strings(user_token, { "large stick" })) {
+		return ValueTokens::LARGE_STICK;
 	}
-	else if (Util::equals_strings(user_token, { "stick", "branch"})) {
-		return ValueTokens::STICK;
+	else if (Util::equals_strings(user_token, { "key", "metal key"})) {
+		return ValueTokens::KEY_METAL;
 	}
-	else if (Util::equals_strings(user_token, { "backpack" })) {
-		return ValueTokens::BACKPACK;
+	else if (Util::equals_strings(user_token, { "box", "postbox"})) {
+		return ValueTokens::POSTBOX;
 	}
-	else if (Util::equals_strings(user_token, { "sword", "weapon" })) {
-		return ValueTokens::SWORD;
+	else if (Util::equals_strings(user_token, { "rod", "iron rod" })) {
+		return ValueTokens::IRON_ROD;
 	}
-	else if (Util::equals_strings(user_token, { "shield" })) {
-		return ValueTokens::SHIELD;
+	else if (Util::equals_strings(user_token, { "sword", "sword of the sons"})) {
+		return ValueTokens::SWORD_OF_THE_SONS;
 	}
-	else if (Util::equals_strings(user_token, { "letter_cave"})) {
-		return ValueTokens::LETTER_FRAGMENT_CAVE;
+	else if (Util::equals_strings(user_token, { "shield", "sturdy shield"})) {
+		return ValueTokens::STURDY_SHIELD;
 	}
-	else if (Util::equals_strings(user_token, { "letter_house" })) {
-		return ValueTokens::LETTER_FRAGMENT_HOUSE;
-	}
-	else if (Util::equals_strings(user_token, { "letter_pit" })) {
-		return ValueTokens::LETTER_FRAGMENT_PIT;
-	}
-	else if (Util::equals_strings(user_token, { "letter_mountains" })) {
+	else if (Util::equals_strings(user_token, { "letter mountains" })) {
 		return ValueTokens::LETTER_FRAGMENT_MOUNTAINS;
 	}
-	else if (Util::equals_strings(user_token, { "unlock", "open" })) {
-		return ValueTokens::LETTER_FRAGMENT_RIVER;
+	else if (Util::equals_strings(user_token, { "letter hut" })) {
+		return ValueTokens::LETTER_FRAGMENT_HUT;
 	}
-	else if (Util::equals_strings(user_token, { "house_key" })) {
-		return ValueTokens::KEY;
+	else if (Util::equals_strings(user_token, { "letter cave" })) {
+		return ValueTokens::LETTER_FRAGMENT_CAVE;
 	}
-	else if (Util::equals_strings(user_token, { "breaking_rod", "rod"})) {
-		return ValueTokens::BREAKING_ROD;
+	else if (Util::equals_strings(user_token, { "letter ravine" })) {
+		return ValueTokens::LETTER_FRAGMENT_RAVINE;
 	}
-	else if (Util::equals_strings(user_token, { "chest" })) {
-		return ValueTokens::TREASURE_CHEST;
+	else if (Util::equals_strings(user_token, { "letter treasure" })) {
+		return ValueTokens::LETTER_FRAGMENT_TREASURE_ROOM;
 	}
-	else if (Util::equals_strings(user_token, { "medaillon", "treasure"})) {
-		return ValueTokens::MEDAILLON;
+	else if (Util::equals_strings(user_token, { "medallion", "wisedom"})) {
+		return ValueTokens::MEDALLION_WISEDOM;
+	}
+	else if (Util::equals_strings(user_token, { "treasure chest, chest" })) {
+		return ValueTokens::CHEST_TREASURE;
+	}
+	else if (Util::equals_strings(user_token, { "21591"})) {
+		return ValueTokens::PASSCODE_TREASURE_CHEST;
 	}
 
 	return ValueTokens::UNKNOWN_VALUE;

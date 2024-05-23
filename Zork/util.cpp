@@ -4,11 +4,13 @@
 void Util::split_string(const std::string& input, std::vector<std::string>& parts, const char delimiter)
 {
 	std::string value;
+	bool only_one_split = false;	// Current game version supports one order token and one value token (this token can contain the delimiter)
 	for (const char i : input)
 	{
-		if (i == delimiter && value.length() != 0) {
+		if (!only_one_split && i == delimiter && value.length() != 0) {
 			parts.push_back(value);
 			value = "";
+			only_one_split = true;
 		}
 		else {
 			value += i;

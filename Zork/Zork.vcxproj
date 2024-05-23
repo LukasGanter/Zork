@@ -148,7 +148,7 @@
     <ClCompile Include="item.cpp" />
     <ClCompile Include="key.cpp" />
     <ClCompile Include="letterFragment.cpp" />
-    <ClCompile Include="medaillon.cpp" />
+    <ClCompile Include="medallion.cpp" />
     <ClCompile Include="npc.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="room.cpp" />
@@ -173,7 +173,7 @@
     <ClInclude Include="item.h" />
     <ClInclude Include="key.h" />
     <ClInclude Include="letterFragment.h" />
-    <ClInclude Include="medaillon.h" />
+    <ClInclude Include="medallion.h" />
     <ClInclude Include="npc.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />

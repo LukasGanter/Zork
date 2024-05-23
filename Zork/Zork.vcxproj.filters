@@ -108,7 +108,7 @@
     <ClCompile Include="sword.cpp">
       <Filter>Quelldateien\items\weapon</Filter>
     </ClCompile>
-    <ClCompile Include="medaillon.cpp">
+    <ClCompile Include="medallion.cpp">
       <Filter>Quelldateien\items\collectibles</Filter>
     </ClCompile>
     <ClCompile Include="letterFragment.cpp">
@@ -182,7 +182,7 @@
     <ClInclude Include="letterFragment.h">
       <Filter>Headerdateien\items\collectibles</Filter>
     </ClInclude>
-    <ClInclude Include="medaillon.h">
+    <ClInclude Include="medallion.h">
       <Filter>Headerdateien\items\collectibles</Filter>
     </ClInclude>
     <ClInclude Include="stick.h">

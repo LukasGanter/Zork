@@ -7,7 +7,7 @@
 #include "key.h"
 #include "letterFragment.h"
 #include "breakingRod.h"
-#include "medaillon.h"
+#include "medallion.h"
 #include "shield.h"
 #include "sword.h"
 #include "character.h"
@@ -18,25 +18,25 @@ World::World(const std::string& title, const std::string& description) :
 {
     Player* player = new Player("Rantanplan", "Only player in the world");
 
-    Item* mountain_item_1 = new Stick("small", "A small wooden stick", ValueTokens::UNKNOWN_VALUE, 1, 1, 2, 1);
-    Item* mountain_item_2 = new Stick("big", "A big wooden stick", ValueTokens::UNKNOWN_VALUE, 3, 4, 2, 5);
-    Item* mountain_item_3 = new LetterFragment("Fragment3", "A message from the king. ", ValueTokens::UNKNOWN_VALUE, "5 bandits are travelling the lands. Be aware!");
-    Item* mountain_item_4 = new Key("Metalkey", "A large metal key, suitable for the door of a house", ValueTokens::UNKNOWN_VALUE, "7");
-    Item* mountain_item_5 = new Chest("Postbox", "A small wooden box in the middle of the field, adjacent to the house", ValueTokens::UNKNOWN_VALUE, mountain_item_4, false, ValueTokens::UNKNOWN_VALUE);
+    Item* mountain_item_1 = new Stick("small", "A small wooden stick", ValueTokens::SMALL_STICK, 1, 1, 2, 1);
+    Item* mountain_item_2 = new Stick("big", "A big wooden stick", ValueTokens::LARGE_STICK, 3, 4, 2, 5);
+    Item* mountain_item_3 = new LetterFragment("Fragment3", "A message from the king. ", ValueTokens::LETTER_FRAGMENT_MOUNTAINS, "5 bandits are travelling the lands. Be aware!");
+    Item* mountain_item_4 = new Key("Metalkey", "A large metal key, suitable for the door of a house", ValueTokens::KEY_METAL, "7");
+    Item* mountain_item_5 = new Chest("Postbox", "A small wooden box in the middle of the field, adjacent to the house", ValueTokens::POSTBOX, mountain_item_4, false, ValueTokens::UNKNOWN_VALUE);
 
-    Item* hut_item_1 = new BreakingRod("Iron rod", "A large, heavy iron rod designed for destroying obstacles on the way.", ValueTokens::UNKNOWN_VALUE, 3, 10, 5, 100);
-    Item* hut_item_2 = new Sword("Sword of the sons", "A sleek, elegant weapon from ancient times.", ValueTokens::UNKNOWN_VALUE, 10, 2, 6, 40);
-    Item* hut_item_3 = new LetterFragment("Fragment1", "Estate of the great hunter", ValueTokens::UNKNOWN_VALUE
+    Item* hut_item_1 = new BreakingRod("Iron rod", "A large, heavy iron rod designed for destroying obstacles on the way.", ValueTokens::IRON_ROD, 3, 10, 5, 100);
+    Item* hut_item_2 = new Sword("Sword of the sons", "A sleek, elegant weapon from ancient times.", ValueTokens::SWORD_OF_THE_SONS, 10, 2, 6, 40);
+    Item* hut_item_3 = new LetterFragment("Fragment1", "Estate of the great hunter", ValueTokens::LETTER_FRAGMENT_HUT
         , "Inside the estate there are two of my once greatest possessions.\nThe sword of the sons and the medaillon of the wisedom.");
 
-    Item* treasure_item_1 = new Medaillon("Wisedom", "The medaillon of wisedom", ValueTokens::UNKNOWN_VALUE, "The engraving reads: The medaillon of Wisedom");
-    Item* treasure_item_2 = new LetterFragment("Fragment2", "Cursed treasures", ValueTokens::UNKNOWN_VALUE, "The single treasure in this room is cursed.");
-    Item* treasure_item_3 = new Chest("Treasure", "A large wooden chest with golden metal framings. Must contain valuable things!", ValueTokens::UNKNOWN_VALUE, treasure_item_1, true, ValueTokens::UNKNOWN_VALUE);
+    Item* treasure_item_1 = new Medallion("Wisedom", "The medallion of wisedom", ValueTokens::MEDALLION_WISEDOM, "The engraving reads: The medallion of wisedom");
+    Item* treasure_item_2 = new LetterFragment("Fragment2", "Cursed treasures", ValueTokens::LETTER_FRAGMENT_TREASURE_ROOM, "The single treasure in this room is cursed.");
+    Item* treasure_item_3 = new Chest("Treasure", "A large wooden chest with golden metal framings. Must contain valuable things!", ValueTokens::CHEST_TREASURE, treasure_item_1, true, ValueTokens::PASSCODE_TREASURE_CHEST);
 
-    Item* ravine_item_1 = new LetterFragment("Fragment5", "A planned trap", ValueTokens::UNKNOWN_VALUE, "Ritsche ratsche voller Tücke in die Brücke eine Lücke!");
-    Item* ravine_item_2 = new Shield("Shield", "A sturdy round shield", ValueTokens::UNKNOWN_VALUE, 1, 1, 10, 80);
+    Item* ravine_item_1 = new LetterFragment("Fragment5", "A planned trap", ValueTokens::LETTER_FRAGMENT_RAVINE, "The sturdy bridge with one hole");
+    Item* ravine_item_2 = new Shield("Shield", "A sturdy round shield", ValueTokens::STURDY_SHIELD, 1, 1, 10, 80);
 
-    Item* cave_item_1 = new LetterFragment("Fragment4", "A moving stone", ValueTokens::UNKNOWN_VALUE, "I swear, the big stone in the corner moved.");
+    Item* cave_item_1 = new LetterFragment("Fragment4", "A moving stone", ValueTokens::LETTER_FRAGMENT_CAVE, "I swear, the big stone in the corner moved. 9 times!");
 
     Connector* mountains_connector_1 = new Connector("Door", "The door of the hut", new Storyline({ "The door of the hut" }), ValueTokens::NORTH, true, "Metalkey", 0, 0);
     Connector* mountains_connector_2 = new Connector("Bridge", "The bridge over the ravine", new Storyline({ "You step on the bridge.", "Its more slippery than it looked before", "You fall!", "Darkness surrounds you. Then your vision turns white.", "Hey, you are finally awake!" }),

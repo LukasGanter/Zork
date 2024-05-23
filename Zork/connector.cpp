@@ -57,7 +57,7 @@ bool Connector::lock(const ValueTokens key_type, const std::string& key_id)
 	if (is_locked) {
 		std::cout << "The door is already locked!\n";
 		return true;
-	} else if (key_type == ValueTokens::KEY && suitable_key.compare(key_id) == 0) {
+	} else if (key_type == ValueTokens::KEY_METAL && suitable_key.compare(key_id) == 0) {
 		is_locked = true;
 		std::cout << "Door locked!\n";
 		return true;
@@ -74,7 +74,7 @@ bool Connector::unlock(const ValueTokens key_type, const std::string& key_id)
 		std::cout << "The door is already unlocked!\n";
 		return true;
 	}
-	else if (key_type == ValueTokens::KEY && suitable_key.compare(key_id) == 0) {
+	else if (key_type == ValueTokens::KEY_METAL && suitable_key.compare(key_id) == 0) {
 		is_locked = false;
 		std::cout << "Door unlocked!\n";
 		return true;
