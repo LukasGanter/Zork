@@ -41,12 +41,16 @@ bool Connector::take_connector(const ValueTokens direction, Player* player)
 	// Check if the direction is valid
 	if (exit_direction == direction) {
 		if (is_locked) {
-			std::cout << "This door blocking this way is locked! Do you have a suitable key?\n";
+			std::cout << "The door blocking this way is locked! Do you have a suitable key?\n";
+			return false;
 		} else if (door_blocked_by > 0) {
 			std::cout << "This way is blocked by a bunch of debries! Try to clear it using special tools\n";
+			return false;
 		}
-		this->player = player;
-		return true;
+		else {
+			this->player = player;
+			return true;
+		}
 	}
 	return false;
 }
