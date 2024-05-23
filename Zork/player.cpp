@@ -17,16 +17,16 @@ void Player::tick()
 {
 }
 
-bool Player::equip_weapon(const ValueTokens weapon_type, const std::string& weapon_id)
+bool Player::equip_weapon(const ValueTokens weapon)
 {
 	if (equiped_weapon != nullptr) {
-		std::cout << "Deep in thoughts you try to get " << weapon_id << " out of your bag. Then you remember. You are already handling "<< equiped_weapon->title << "\n";
+		std::cout << "Deep in thoughts you try to get a new weapon out of your bag. Then you remember. You are already handling "<< equiped_weapon->title << "\n";
 		return false;
 	}
 
 	int item_to_equip = -1;
 	for (size_t i = 0; i < inventory.size(); i++) {
-		if (inventory[i]->title.compare(weapon_id) == 0) {
+		if (inventory[i]->token == weapon) {
 			item_to_equip = i;
 			break;
 		}
@@ -39,7 +39,7 @@ bool Player::equip_weapon(const ValueTokens weapon_type, const std::string& weap
 		return true;
 	}
 	else {
-		std::cout << "You don´t possess an item with the name " << weapon_id << "!\n";
+		std::cout << "You don´t possess an item with that name!\n";
 		return false;
 	}
 }
@@ -79,24 +79,24 @@ bool Player::take_item(Item* item)
 	}
 }
 
-bool Player::drop_item(Room* room, const ValueTokens item_type, const std::string& item_id)
+bool Player::drop_item(Room* room, const ValueTokens item)
 {
 	int itemToRemove = -1;
 	for (size_t i = 0; i < inventory.size(); i++) {
-		if (inventory[i]->title.compare(item_id) == 0) {
+		if (inventory[i]->token == item) {
 			itemToRemove = i;
 			break;
 		}
 	}
 
 	if (itemToRemove != -1) {
-		std::cout << "You drop " << item_id << "in the middle of the room\n";
+		std::cout << "You drop the item in the middle of the room\n";
 		room->drop_item(inventory[itemToRemove]);
 		inventory.erase(inventory.begin() + itemToRemove);
 		return true;
 	}
 	else {
-		std::cout << "You don´t possess an item with the name " << item_id << "!\n";
+		std::cout << "You don´t possess an item with that name!\n";
 		return false;
 	}
 }

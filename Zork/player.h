@@ -20,12 +20,11 @@ public:
 	/*
 	Equips the specified weapon, if it is present inside the inventory and if no other weapon is currently equipped
 
-	Input "weapon_type":	the type of the weapon (sword, stick, ...)
-	Input "weapon_id":		the unique id of the weapon
+	Input "weapon":		the token of the weapon
 
-	Output:					If the weapon was equipped
+	Output:				If the weapon was equipped
 	*/
-	bool equip_weapon(const ValueTokens weapon_type, const std::string& weapon_id);
+	bool equip_weapon(const ValueTokens weapon);
 
 	/*
 	Unequipps the currently equipped weapon, if present. Adds it to the inventory or drops it if the inventory is full
@@ -48,13 +47,12 @@ public:
 	/*
 	Drops the specified item into the room
 
-	Input "room":			the room to drop the items into
-	Input "item_type":		the type of the item 
-	Input "item_id":		the unique id of the item
+	Input "room":		the room to drop the items into
+	Input "item":		the token of the item 
 
-	Output:					If the weapon was equipped
+	Output:				If the weapon was equipped
 	*/
-	bool drop_item(Room* room, const ValueTokens item_type, const std::string& item_id);
+	bool drop_item(Room* room, const ValueTokens item);
 
 	/*
 	Tries to drop an item, specified by its token, into the specified storage container
