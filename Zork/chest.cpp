@@ -43,14 +43,14 @@ bool Chest::unlock(const ValueTokens code)
 	}
 }
 
-bool Chest::take_item(Player* player)
+bool Chest::take_item(Player* player, const ValueTokens token)
 {
 	if (is_locked) {
 		std::cout << "This chest is locked. Unlock it first using the passcode!\n";
 		return false;
 	}
 	else {
-		return Storage::take_item(player);
+		return Storage::take_item(player, token);
 	}
 }
 

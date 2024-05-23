@@ -32,18 +32,40 @@ Room::~Room()
 
 void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<ValueTokens>& value_tokens)
 {
+
 	// For a start only one order token and 0 or 1 value token is used per user input
-	const OrderTokens order = order_tokens.size() > 0 ? order_tokens[0] : OrderTokens::UNKNOWN_ORDER;
-	const ValueTokens value = value_tokens.size() > 0 ? value_tokens[0] : ValueTokens::UNKNOWN_VALUE;
+	const OrderTokens order = order_tokens.empty() ? OrderTokens::UNKNOWN_ORDER : order_tokens[0];
+	const ValueTokens value = value_tokens.empty() ? ValueTokens::UNKNOWN_VALUE : value_tokens[0];
 
 	bool took_connector = false;
+	int item_index = -1;
 
 	if (player != nullptr) {
 		switch (order) {
 		case OrderTokens::LOOK:
+			// Prints the information about the current room to the screen
 			look_around();
 			break;
 		case OrderTokens::TAKE:
+			for (size_t i = 0; i < items.size(); i++) {
+				Item* item = items[i];
+				Storage* cast_item = static_cast<Storage*>(item);
+				if (cast_item->take_item(player, value)) {
+					break;
+				}
+				else {
+					if (player->take_item(item)) {
+						item_index = i;
+					}
+				}
+			}
+
+			if (item_index != -1) {
+				items.erase(items.begin() + item_index);
+			}
+			else {
+				std::cout << "There is not item with that name in this room or any storage containers!\n";
+			}
 			break;
 		case OrderTokens::DROP:
 			break;
@@ -104,4 +126,13 @@ void Room::drop_item(Item* item)
 void Room::look_around()
 {
 	print_information();
+	for (Connector* connector : connectors) {
+		connector->print_information();
+	}
+	for (NPC* npc : npcs) {
+		npc->print_information();
+	}
+	for (Item* item : items) {
+		item->print_information();
+	}
 }

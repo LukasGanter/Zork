@@ -24,10 +24,14 @@ void Storage::print_contents()
 	}
 }
 
-bool Storage::take_item(Player* player)
+bool Storage::take_item(Player* player, const ValueTokens token)
 {
 	if (stored_item == nullptr) {
 		std::cout << "This storage is empty.\n";
+		return false;
+	}
+	else if (stored_item->token != token) {
+		std::cout << "This item is not inside the storage.\n";
 		return false;
 	}
 	else {
