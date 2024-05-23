@@ -31,7 +31,7 @@ public:
 
 	Output:				Whether the player switched rooms or not
 	*/
-	bool take_connector(const ValueTokens& direction, Player* player);
+	bool take_connector(const ValueTokens direction, Player* player);
 
 	/*
 	Tries to lock the given connector with the provided key
@@ -65,9 +65,12 @@ private:
 	Player* player;
 
 	Room* target;
-	const ValueTokens exit_direction;
 	bool is_locked;
 	const ValueTokens suitable_key;
 	int door_blocked_by; // If value is <= 0 then the exit is not blocked
 	int block_resistance;
+
+public:
+	const ValueTokens exit_direction;
+
 };

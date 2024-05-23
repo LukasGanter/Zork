@@ -5,10 +5,13 @@
 enum class OrderTokens
 {
 	UNKNOWN_ORDER,
+	NO_ORDER_INPUT,
 	LOOK,
 	TAKE,
 	LOOT,
 	DROP,
+	STORE,
+	REMEMBER,
 	MOVE,
 	ATTACK,
 	DEFEND,
@@ -24,6 +27,7 @@ enum class OrderTokens
 enum class ValueTokens
 {
 	UNKNOWN_VALUE,
+	NO_VALUE_INPUT,
 	NORTH,
 	EAST,
 	SOUTH,

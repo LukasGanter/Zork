@@ -35,6 +35,12 @@ OrderTokens Tokenizer::parseOrderToken(const std::string& user_token)
 	else if (Util::equals_strings(user_token, { "drop" })) {
 		return OrderTokens::DROP;
 	}
+	else if (Util::equals_strings(user_token, { "remember", "remember key"})) {
+		return OrderTokens::REMEMBER;
+	}
+	else if (Util::equals_strings(user_token, { "store" })) {
+		return OrderTokens::STORE;
+	}
 	else if (Util::equals_strings(user_token, { "move", "go", "visit" })) {
 		return OrderTokens::MOVE;
 	}

@@ -41,6 +41,33 @@ public:
 	*/
 	void drop_item(Item* item);
 
+	/*
+	Checks if the token is empty or not parsable and prints a message accordingly
+
+	Input "token":	the value token to be checked
+
+	Return:			Whether the token is valid
+	*/
+	bool check_wrong_value_input(const ValueTokens token);
+
+	/*
+	Gets the npc from the room for this token, if available
+
+	Input "token":	The token the npc needs to have
+
+	Return:			The npc or nullptr
+	*/
+	NPC* get_npc_for_token(const ValueTokens token);
+
+	/*
+	Gets the item from the room for this token, if available
+
+	Input "token":	The token the item needs to have
+
+	Return:			The item or nullptr
+	*/
+	Item* get_item_for_token(const ValueTokens token);
+
 private:
 
 	void look_around();

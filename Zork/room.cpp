@@ -1,5 +1,6 @@
 #include "room.h"
 #include <iostream>
+#include "chest.h"
 
 Room::Room(const std::string& title, const std::string& description, Player* player, std::initializer_list<Connector*> connectors, std::initializer_list<NPC*> npcs, std::initializer_list<Item*> items) :
 	Entity(title, description), player(player), connectors(connectors), npcs(npcs), items(items)
@@ -33,13 +34,19 @@ Room::~Room()
 
 void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<ValueTokens>& value_tokens)
 {
+	// Stop any interaction with npcs if the user enters another order
+	for (NPC* npc : npcs) {
+		npc->stop_talk();
+	}
 
 	// For a start only one order token and 0 or 1 value token is used per user input
-	const OrderTokens order = order_tokens.empty() ? OrderTokens::UNKNOWN_ORDER : order_tokens[0];
-	const ValueTokens value = value_tokens.empty() ? ValueTokens::UNKNOWN_VALUE : value_tokens[0];
+	const OrderTokens order = order_tokens.empty() ? OrderTokens::NO_ORDER_INPUT : order_tokens[0];
+	const ValueTokens value = value_tokens.empty() ? ValueTokens::NO_VALUE_INPUT : value_tokens[0];
 
 	bool took_connector = false;
 	int item_index = -1;
+	std::vector<Key*> keys;
+	NPC* npc;
 
 	if (player != nullptr) {
 		switch (order) {
@@ -48,8 +55,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			look_around();
 			break;
 		case OrderTokens::LOOT:
-			if (value == ValueTokens::UNKNOWN_VALUE) {
-				std::cout << "Nothing can not be looted. Tell me want you want to loot.\n";
+			if (!check_wrong_value_input(value)) {
 				break;
 			}
 			for (size_t i = 0; i < items.size(); i++) {
@@ -61,8 +67,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			}
 			break;
 		case OrderTokens::TAKE:
-			if (value == ValueTokens::UNKNOWN_VALUE) {
-				std::cout << "Nothing can not be taken. Tell me want you want to take.\n";
+			if (!check_wrong_value_input(value)) {
 				break;
 			}
 			for (size_t i = 0; i < items.size(); i++) {
@@ -80,20 +85,91 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			}
 			break;
 		case OrderTokens::DROP:
+			if (value == ValueTokens::NO_VALUE_INPUT) {
+				player->drop_inventory(this);
+			}
+			else {
+				player->drop_item(this, value);
+			}
+			break;
+		case OrderTokens::STORE:
+
 			break;
 		case OrderTokens::ATTACK:
 			break;
 		case OrderTokens::DEFEND:
 			break;
 		case OrderTokens::TALK:
+			npc = get_npc_for_token(value);
+			if (npc != nullptr) {
+				npc->talk(player->has_medallion());
+			}
+			else {
+				std::cout << "Nobody with that name is here in the room!\n";
+			}
+			break;
+		case OrderTokens::READ:
+			if (!check_wrong_value_input(value)) {
+				break;
+			}
+			player->read(value);
 			break;
 		case OrderTokens::EQUIP:
+			player->equip_weapon(value);
 			break;
 		case OrderTokens::UNEQUIP:
+			player->unequip_weapon(this);
+			break;
+		case OrderTokens::REMEMBER:
+			player->remember_key(value);
 			break;
 		case OrderTokens::LOCK:
+			if (!check_wrong_value_input(value)) {
+				break;
+			}
+
+			if (player->get_keys_in_inventory(keys)) {
+				for (Key* key : keys) {
+					for (Connector* connector : connectors) {
+						if (connector->exit_direction == value) {
+							connector->lock(key->token);
+							return;
+						}
+					}
+					for (Item* item : items) {
+						if (static_cast<Chest*>(item) && item->token == value) {
+							static_cast<Chest*>(item)->lock(key->token);
+							return;
+						}
+					}
+				}
+			}
+			std::cout << "You do not possess the correct key!\n";
+			
 			break;
 		case OrderTokens::UNLOCK:
+			if (!check_wrong_value_input(value)) {
+				break;
+			}
+
+			if (player->get_keys_in_inventory(keys)) {
+				for (Key* key : keys) {
+					for (Connector* connector : connectors) {
+						if (connector->exit_direction == value) {
+							connector->unlock(key->token);
+							return;
+						}
+					}
+					for (Item* item : items) {
+						if (static_cast<Chest*>(item) && item->token == value) {
+							static_cast<Chest*>(item)->unlock(key->token);
+							return;
+						}
+					}
+				}
+			}
+			std::cout << "You do not possess the correct key!\n";
+
 			break;
 		case OrderTokens::INVENTORY:
 			// Prints the information of all items in the inventory to the screen
@@ -135,6 +211,41 @@ void Room::drop_item(Item* item)
 	if (item != nullptr) {
 		items.push_back(item);
 	}
+}
+
+bool Room::check_wrong_value_input(const ValueTokens token)
+{
+	if (token == ValueTokens::NO_VALUE_INPUT) {
+		std::cout << "What object do you want to handle?\n";
+		return false;
+	}
+	else if (token == ValueTokens::UNKNOWN_VALUE) {
+		std::cout << "This object does not exist in this world\n";
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+NPC* Room::get_npc_for_token(const ValueTokens token)
+{
+	for (NPC* npc : npcs) {
+		if (npc->token == token) {
+			return npc;
+		}
+	}
+	return nullptr;
+}
+
+Item* Room::get_item_for_token(const ValueTokens token)
+{
+	for (Item* item : items) {
+		if (item->token == token) {
+			return item;
+		}
+	}
+	return nullptr;
 }
 
 void Room::look_around()

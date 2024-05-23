@@ -5,6 +5,7 @@
 #include <vector>
 #include "tokenizer.h"
 #include "storage.h"
+#include "key.h"
 
 class Room;
 
@@ -76,6 +77,36 @@ public:
 	Prints out an overview of all the items currently inside the inventory
 	*/
 	void search_inventory();
+
+	/*
+	Reads the story of a collectible if available
+
+	Input "token":	The token of the item
+	*/
+	void read(const ValueTokens token);
+
+	/*
+	Utility function for checking if the player has the medallion in his inventory
+
+	Return:		true if a medallion is in the players inventory, false otherwise
+	*/
+	bool has_medallion();
+
+	/*
+	Returns a list of all keys present in the players inventory
+
+	Input "keys":	the output list for the keys
+
+	Return:			whether any key was present
+	*/
+	bool get_keys_in_inventory(std::vector<Key*>& keys);
+
+	/*
+	Remembers a given number sequence as the key to a chest
+
+	Input "new_key": The new key to remember
+	*/
+	void remember_key(const ValueTokens new_key);
 
 private:
 

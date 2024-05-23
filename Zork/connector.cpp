@@ -36,7 +36,7 @@ void Connector::tick()
 	}
 }
 
-bool Connector::take_connector(const ValueTokens& direction, Player* player)
+bool Connector::take_connector(const ValueTokens direction, Player* player)
 {
 	// Check if the direction is valid
 	if (exit_direction == direction) {
@@ -53,35 +53,34 @@ bool Connector::take_connector(const ValueTokens& direction, Player* player)
 
 bool Connector::lock(const ValueTokens key)
 {
-	if (is_locked) {
-		std::cout << "The door is already locked!\n";
-		return true;
-	} else if (suitable_key == key) {
-		is_locked = true;
-		std::cout << "Door locked!\n";
-		return true;
+	if (suitable_key == key) {
+		if (is_locked) {
+			std::cout << "The door is already locked!\n";
+			return true;
+		}
+		else {
+			is_locked = true;
+			std::cout << "Door locked!\n";
+			return true;
+		}
 	}
-	else {
-		std::cout << "You do not possess the necessary key to lock this door.\n";
-		return false;
-	}
+	return false;
 }
 
 bool Connector::unlock(const ValueTokens key)
 {
-	if (!is_locked) {
-		std::cout << "The door is already unlocked!\n";
-		return true;
+	if (suitable_key == key) {
+		if (!is_locked) {
+			std::cout << "The door is already unlocked!\n";
+			return true;
+		}
+		else {
+			is_locked = false;
+			std::cout << "Door unlocked!\n";
+			return true;
+		}
 	}
-	else if (suitable_key == key) {
-		is_locked = false;
-		std::cout << "Door unlocked!\n";
-		return true;
-	}
-	else {
-		std::cout << "You do not possess the necessary key to unlock this door.\n";
-		return false;
-	}
+	return false;
 }
 
 bool Connector::unblock(Weapon* weapon_to_use)

@@ -58,7 +58,14 @@ World::World(const std::string& title, const std::string& description) :
     Connector* treasure_connector_1 = new Connector("TreasureEntrance", "The opened hole with the rest of the wooden planks.", new Storyline({ "You walk back into the cave." }),
         ValueTokens::NORTH, false, ValueTokens::UNKNOWN_VALUE, 0, 0);
 
-    NPC* hut_man = new NPC("Man", "An old man living in a remote mountain hut", 2, 1);
+    NPC* hut_man = new NPC("Man", "An old man living in a remote mountain hut", ValueTokens::OLD_MAN, 2, 1, 
+        new Storyline({
+            "Hello, what leads you out here into the wilderness?", "Hello, i am one a far journey across the country.\nHow long have you been living here ouside all by yourself?", 
+            "I have been living here for ages. My father told me about a precious medallion which should be buried here somewhere.\nHowever i did not find it ever. I have given up hope.", 
+            "I will keep my eyes open. See you soon.", "It was nice to meet you, have a save trip."
+            }), 
+        new Storyline({"Oh, you are back. Do you have the medallion?", "Yes, i have it here. It was stored away in a chest in the cave adjacent to the ravine.", 
+            "Wow, it look exactly like i remember it. I can not thank you enought."}));
 
     // Mountain room
     Room* room_mountain = new Room("Mountains", "Outside starting area", player,

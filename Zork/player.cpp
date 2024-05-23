@@ -66,7 +66,7 @@ bool Player::unequip_weapon(Room* room)
 bool Player::take_item(Item* item, const ValueTokens token)
 {
 	if (!item->is_takable) {
-		std::cout <<  item->title << " is to heavy to pick up.\n";
+		std::cout <<  item->title << " is tot heavy to pick up.\n";
 		return false;
 	}
 	else if (item->token != token) {
@@ -150,6 +150,60 @@ void Player::search_inventory()
 		for (Item* item : inventory) {
 			item->print_information();
 		}
+	}
+	
+}
+
+void Player::read(const ValueTokens token)
+{
+	for (Item* item : inventory) {
+		if (item->token == token) {
+			if (static_cast<Collectible*>(item)) {
+				static_cast<Collectible*>(item)->read_story();
+			}
+			else {
+				std::cout << "This item does not have a story.\n";
+			}
+			return;
+		}
+	}
+	std::cout << "This item does not exist in your inventory\n";
+}
+
+bool Player::has_medallion()
+{
+	for (Item* item : inventory) {
+		if (item->token == ValueTokens::MEDALLION_WISEDOM) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Player::get_keys_in_inventory(std::vector<Key*>& keys)
+{
+	for (Item* item : inventory) {
+		if (static_cast<Key*>(item)) {
+			keys.push_back(static_cast<Key*>(item));
+		}
+	}
+	return !keys.empty();
+}
+
+void Player::remember_key(const ValueTokens new_key)
+{
+	if (new_key == ValueTokens::PASSCODE_TREASURE_CHEST) {
+		for (Item* item : inventory) {
+			if (item->token == ValueTokens::PASSCODE_TREASURE_CHEST) {
+				std::cout << "You already remembered that passcode.\n";
+				return;
+			}
+		}
+		inventory.push_back(new Key("Passcode", "A number sequence, might be relevant later on", new_key, ""));
+		std::cout << "You write the passcode onto a piece of old fabric and put it in your backpack. You never know when you need it.\n";
+	}
+	else {
+		std::cout << "You realize that this code is not relevant for the game.\n";
 	}
 	
 }

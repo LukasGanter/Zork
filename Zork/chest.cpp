@@ -25,7 +25,7 @@ bool Chest::lock(const ValueTokens code)
 		return true;
 	}
 	else {
-		std::cout << "You enter the code into the old, metal lock. But the shackle does not move into position. The code must be wrong!\n";
+		//std::cout << "You enter the code into the old, metal lock. But the shackle does not move into position. The code must be wrong!\n";
 		return false;
 	}
 }
@@ -38,7 +38,7 @@ bool Chest::unlock(const ValueTokens code)
 		return true;
 	}
 	else {
-		std::cout << "You enter the code into the old, metal lock. But the shackle does not move. The code must be wrong!\n";
+		//std::cout << "You enter the code into the old, metal lock. But the shackle does not move. The code must be wrong!\n";
 		return false;
 	}
 }
