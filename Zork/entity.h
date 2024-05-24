@@ -1,6 +1,10 @@
 #pragma once
 #include <string>
 
+/*
+Base class for all game objects.
+Contains a title and description as well as functions to print the information
+*/
 class Entity
 {
 public:

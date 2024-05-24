@@ -44,6 +44,7 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 	const ValueTokens value = value_tokens.empty() ? ValueTokens::NO_VALUE_INPUT : value_tokens[0];
 
 	bool took_connector = false;
+	bool success = false;
 	int item_index = -1;
 	std::vector<Key*> keys;
 	NPC* npc;
@@ -109,11 +110,6 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 			}
 			item = nullptr;
 			break;
-		case OrderTokens::ATTACK:
-
-			break;
-		case OrderTokens::DEFEND:
-			break;
 		case OrderTokens::TALK:
 			npc = get_npc_for_token(value);
 			if (npc != nullptr) {
@@ -148,18 +144,20 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 				for (Key* key : keys) {
 					for (Connector* connector : connectors) {
 						if (connector->exit_direction == value || connector->token == value) {
-							connector->lock(key->token);
+							success = connector->lock(key->token);
 						}
 					}
 					for (Item* item : items) {
 						if (static_cast<Chest*>(item) && item->token == value) {
-							static_cast<Chest*>(item)->lock(key->token);
+							success = static_cast<Chest*>(item)->lock(key->token);
 						}
 					}
 				}
 			}
 			keys.clear();
-			std::cout << "You do not possess the correct key!\n";
+			if (!success) {
+				std::cout << "You do not possess the correct key!\n";
+			}
 			
 			break;
 		case OrderTokens::UNLOCK:
@@ -171,18 +169,20 @@ void Room::update_by_token(std::vector<OrderTokens>& order_tokens, std::vector<V
 				for (Key* key : keys) {
 					for (Connector* connector : connectors) {
 						if (connector->exit_direction == value) {
-							connector->unlock(key->token);
+							success = connector->unlock(key->token);
 						}
 					}
 					for (Item* item : items) {
 						if (static_cast<Chest*>(item) && item->token == value) {
-							static_cast<Chest*>(item)->unlock(key->token);
+							success = static_cast<Chest*>(item)->unlock(key->token);
 						}
 					}
 				}
 			}
 			keys.clear();
-			std::cout << "You do not possess the correct key!\n";
+			if (!success) {
+				std::cout << "You do not possess the correct key!\n";
+			}
 
 			break;
 		case OrderTokens::INVENTORY:
@@ -269,6 +269,7 @@ Item* Room::get_item_for_token(const ValueTokens token)
 
 void Room::look_around()
 {
+	std::cout << "\n";
 	print_information();
 
 	std::cout << "\nAll available ways: \n";
@@ -288,4 +289,5 @@ void Room::look_around()
 	for (Item* item : items) {
 		item->print_information();
 	}
+	std::cout << "\n";
 }

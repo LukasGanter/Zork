@@ -1,6 +1,7 @@
 #include "storyline.h"
 #include <iostream>
 
+// As the tick function is currently called 5 times a second, waiting 5 ticks results in one text element being printed every second
 Storyline::Storyline(const std::vector<std::string>& story) : story(story), currentStoryPoint(0), counter(0), ticksBetweenStoryParts(5)
 {
 	

@@ -11,6 +11,12 @@ Player::~Player()
 {
 	delete equiped_weapon;
 	equiped_weapon = nullptr;
+
+	for (std::vector<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it)
+	{
+		delete* it;
+	}
+	inventory.clear();
 }
 
 void Player::tick()
@@ -33,7 +39,7 @@ bool Player::equip_weapon(const ValueTokens weapon)
 	}
 
 	if (item_to_equip != -1) {
-		std::cout << "You take " << item_to_equip << " out of your bag and hold it in both hands, slightly smiling. You are ready!\n";
+		std::cout << "You take " << inventory[item_to_equip]->title << " out of your bag and hold it in both hands, slightly smiling. You are ready!\n";
 		equiped_weapon = static_cast<Weapon*>(inventory[item_to_equip]);
 		inventory.erase(inventory.begin() + item_to_equip);
 		return true;
@@ -109,6 +115,7 @@ bool Player::drop_item_into_storage(Storage* storage)
 {
 	if (equiped_weapon == nullptr) {
 		std::cout << "You have no weapon equiped which could be stored away in the storage\n";
+		return false;
 	}
 	else {
 		if (storage->drop_item(equiped_weapon)) {
@@ -134,7 +141,7 @@ void Player::search_inventory()
 		std::cout << "There is nothing inside your inventory!\n";
 	}
 	else {
-		std::cout << "You have some items inside your inventory. Let´s see what it is.\n";
+		std::cout << "You have some items inside your inventory. Lets see what it is.\n";
 		for (Item* item : inventory) {
 			item->print_information();
 		}

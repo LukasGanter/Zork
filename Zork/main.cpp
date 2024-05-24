@@ -15,9 +15,11 @@ int main()
 
 	std::cout << "Welcome to Zork!\n\n";
 
-    using frame_duration = std::chrono::duration<int64_t, std::ratio<1, 5>>;  // 5Hz
+    using frame_duration = std::chrono::duration<int64_t, std::ratio<1, 5>>;  // 200ms pause -> 5 ticks / second
 
     World world("Mountains", "Welcome to Zork mountains!");
+    world.print_information();
+
 
     while (true)
     {

@@ -16,7 +16,7 @@
 World::World(const std::string& title, const std::string& description) :
     Entity(title, description)
 {
-    Player* player = new Player("Rantanplan", "Only player in the world");
+    Player* player = new Player("Rantanplan", "A traveling salesman");
 
     Item* mountain_item_1 = new Stick("small stick", "A small wooden stick", ValueTokens::SMALL_STICK, 1, 1, 2, 1);
     Item* mountain_item_2 = new Stick("large stick", "A big wooden stick", ValueTokens::LARGE_STICK, 3, 4, 2, 5);

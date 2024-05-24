@@ -2,6 +2,10 @@
 #include <string>
 #include <vector>
 
+/*
+Class which manages a story. This is a list of text elements which get printed out over an extended amout of time.
+Used for conversations and changes between rooms.
+*/
 class Storyline
 {
 public: 
@@ -9,6 +13,7 @@ public:
 
 	/*
 	Story tick, only called while the story is active
+	Manages timing of the printing of the text elements
 
 	Return:		Whether the story finished during this tick
 	*/

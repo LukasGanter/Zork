@@ -39,7 +39,7 @@ void NPC::talk(bool has_medallion)
 	if (is_talking) {
 		stop_talk();
 	}
-	this->has_medallion |= has_medallion;
+	this->has_medallion |= has_medallion;	// Once the player has the medallion, the npc should always stay in that state
 	is_talking = true;
 }
 

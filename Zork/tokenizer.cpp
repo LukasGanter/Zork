@@ -23,52 +23,52 @@ bool Tokenizer::tokenize(const std::string& input, std::vector<OrderTokens>& ord
 
 OrderTokens Tokenizer::parseOrderToken(const std::string& user_token)
 {
-	if (Util::equals_strings(user_token, { "look" })) {
+	if (Util::equals_strings(user_token, { "look", "LOOK"})) {
 		return OrderTokens::LOOK;
 	}
-	else if (Util::equals_strings(user_token, { "loot", "search"})) {
+	else if (Util::equals_strings(user_token, { "loot", "search", "LOOT" })) {
 		return OrderTokens::LOOT;
 	}
-	else if (Util::equals_strings(user_token, { "take", "pick", "aquire" })) {
+	else if (Util::equals_strings(user_token, { "take", "pick", "aquire", "TAKE" })) {
 		return OrderTokens::TAKE;
 	}
-	else if (Util::equals_strings(user_token, { "drop" })) {
+	else if (Util::equals_strings(user_token, { "drop", "DROP" })) {
 		return OrderTokens::DROP;
 	}
-	else if (Util::equals_strings(user_token, { "remember", "remember key"})) {
+	else if (Util::equals_strings(user_token, { "remember", "remember key", "REMEMBER" })) {
 		return OrderTokens::REMEMBER;
 	}
-	else if (Util::equals_strings(user_token, { "store" })) {
+	else if (Util::equals_strings(user_token, { "store", "STORE" })) {
 		return OrderTokens::STORE;
 	}
-	else if (Util::equals_strings(user_token, { "move", "go", "visit" })) {
+	else if (Util::equals_strings(user_token, { "move", "go", "visit", "MOVE" })) {
 		return OrderTokens::MOVE;
 	}
-	else if (Util::equals_strings(user_token, { "attack", "hit", "kill" })) {
+	else if (Util::equals_strings(user_token, { "attack", "hit", "kill", "ATTACK" })) {
 		return OrderTokens::ATTACK;
 	}
-	else if (Util::equals_strings(user_token, { "defend" })) {
+	else if (Util::equals_strings(user_token, { "defend", "DEFEND" })) {
 		return OrderTokens::DEFEND;
 	}
-	else if (Util::equals_strings(user_token, { "talk", "speak", "greet", "ask"})) {
+	else if (Util::equals_strings(user_token, { "talk", "speak", "greet", "ask", "TALK" })) {
 		return OrderTokens::TALK;
 	}
-	else if (Util::equals_strings(user_token, { "read" })) {
+	else if (Util::equals_strings(user_token, { "read", "READ" })) {
 		return OrderTokens::READ;
 	}
-	else if (Util::equals_strings(user_token, { "inventory", "overview", "items" })) {
+	else if (Util::equals_strings(user_token, { "inventory", "overview", "items", "INVENTORY" })) {
 		return OrderTokens::INVENTORY;
 	}
-	else if (Util::equals_strings(user_token, { "equip", "hold" })) {
+	else if (Util::equals_strings(user_token, { "equip", "hold", "EQUIP" })) {
 		return OrderTokens::EQUIP;
 	}
-	else if (Util::equals_strings(user_token, { "unequip", "store" })) {
+	else if (Util::equals_strings(user_token, { "unequip", "store", "UNEQUIP" })) {
 		return OrderTokens::UNEQUIP;
 	}
-	else if (Util::equals_strings(user_token, { "lock", "close" })) {
+	else if (Util::equals_strings(user_token, { "lock", "close", "LOCK" })) {
 		return OrderTokens::LOCK;
 	}
-	else if (Util::equals_strings(user_token, { "unlock", "open" })) {
+	else if (Util::equals_strings(user_token, { "unlock", "open", "UNLOCK" })) {
 		return OrderTokens::UNLOCK;
 	}
 

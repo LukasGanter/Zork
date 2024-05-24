@@ -9,6 +9,8 @@ public:
 	~Character();
 
 public:
+
+	// Game tick
 	virtual void tick();
 
 public:

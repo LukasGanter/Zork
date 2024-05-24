@@ -15,6 +15,9 @@ void Chest::print_contents()
 	if (is_locked) {
 		std::cout << "This chest is locked. You need a 5 digit number code to open it!";
 	}
+	else {
+		Storage::print_contents();
+	}
 }
 
 bool Chest::lock(const ValueTokens code)
